@@ -1,31 +1,13 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Eleventy Base Blog v9</title>
-		<meta name="description" content="I am writing about my experiences as a naval navel-gazer.">
-		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Eleventy Base Blog v9">
+		<title>selinakk.github.io</title>
+		<meta name="description" content="꾸준히 공부하고 기록하며 성장합니다">
+		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="selinakk.github.io">
 		
 		<style>.postlist { counter-reset: start-from 5 }
-/* Message Box */
-.message-box {
-	--color-message-box: #ffc;
-
-	display: block;
-	background-color: var(--color-message-box);
-	color: var(--color-gray-90);
-	padding: 1em 0.625em; /* 16px 10px /16 */
-}
-.message-box ol {
-	margin-top: 0;
-}
-
-@media (prefers-color-scheme: dark) {
-	.message-box {
-		--color-message-box: #082840;
-	}
-}
 /* This is an arbitrary CSS string added to the bundle */
 /* Defaults */
 :root {
@@ -43,7 +25,7 @@
 
 	--text-color: var(--color-gray-90);
 	--text-color-link: #082840;
-	--text-color-link-active: #5f2b48;
+	--text-color-link-active: #4663eb;
 	--text-color-link-visited: #17050F;
 
 	--syntax-tab-size: 2;
@@ -56,7 +38,7 @@
 		--color-gray-90: #dad8d8;
 
 		/* --text-color is assigned to --color-gray-_ above */
-		--text-color-link: #1493fb;
+		--text-color-link: #4663eb;
 		--text-color-link-active: #6969f7;
 		--text-color-link-visited: #a6a6f8;
 
@@ -84,9 +66,6 @@ body {
 }
 html {
 	overflow-y: scroll;
-}
-body {
-	max-width: 40em;
 }
 
 /* https://www.a11yproject.com/posts/how-to-hide-content/ */
@@ -122,10 +101,6 @@ a[href]:active {
 	color: var(--text-color-link-active);
 }
 
-main,
-footer {
-	padding: 1rem;
-}
 main :first-child {
 	margin-top: 0;
 }
@@ -195,7 +170,7 @@ header {
 	padding: 1em;
 }
 .home-link {
-	font-size: 1em; /* 16px /16 */
+	font-size: 1.7rem;
 	font-weight: 700;
 	margin-right: 2em;
 }
@@ -287,38 +262,119 @@ header {
 }
 .post-metadata time {
 	margin-right: 1em;
-}</style>
+}
+body{
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 84rem;
+}
+dl,li,menu,ol,ul {list-style: none;}
+header > h1 {
+    margin: 1rem;
+    font-size: 1.5rem;
+}
+.container{
+    display: flex;
+    justify-content: space-between;
+}
+aside.aside{
+    display: flex;
+    width: 16rem;
+    padding: 3rem 2rem;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    border-right: 1px dashed var(--color-gray-20);
+    text-align: center;
+}
+aside.aside ul {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+aside.aside h2 small {
+    font-weight: normal;
+    font-size: 60%;
+}
+.aside footer > a {
+    display: block;
+    padding: 0.4rem;
+}
+.profile {
+    width: 8rem;
+    height: 8rem;
+    margin: 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.profile * {
+    width: 100%;
+    height: 100%;
+}
+.pf__contact {
+    display: inline-flex;
+    width: 100%;
+    padding: 5px 1rem;
+    margin-bottom: 5px;
+    border:1px solid #d1d9e0;
+    border-radius: 6px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    background-color: #f6f8fa;
+}
+.contents{
+    width:100%;
+    max-width: 60rem;
+    height: 90vh;
+    min-height: 90vh;
+    padding: 1rem;
+    overflow-y: auto;
+}
+footer i svg {width:1rem;}</style>
+
 	</head>
 	<body>
 		<a href="#skip" class="visually-hidden">Skip to main content</a>
 
 		<header>
-			<a href="/eleventy-base-blog/" class="home-link">Eleventy Base Blog v9</a>
+			<h1 id="selinakk-github-io"><a href="/eleventy-base-blog/" class="home-link">selinakk.github.io</a></h1>
 			<nav>
 				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
 				<ul class="nav">
-					<li class="nav-item"><a href="/eleventy-base-blog/">Home</a></li>
-					<li class="nav-item"><a href="/eleventy-base-blog/blog/" aria-current="page">Archive</a></li>
-					<li class="nav-item"><a href="/eleventy-base-blog/about/">About</a></li>
-					<li class="nav-item"><a href="/eleventy-base-blog/feed/feed.xml">Feed</a></li>
+					<li class="nav-item"><a href="/eleventy-base-blog/">Home🏠</a></li>
+					<li class="nav-item"><a href="/eleventy-base-blog/blog/" aria-current="page">Posts💻</a></li>
 				</ul>
 			</nav>
 		</header>
-
-		<main id="skip">
-			<heading-anchors>
-				<!-- Delete this block, which will also remove the component CSS from the bundle -->
-<div class="message-box">
-	<ol>
-		<li>Edit <code>_data/metadata.js</code> with your blog’s information.</li>
-		<li>(Optional) Edit <code>eleventy.config.js</code> with your <a href="https://www.11ty.dev/docs/config/">configuration preferences</a>.</li>
-		<li>Delete this message from <code>_includes/layouts/home.njk</code>.</li>
-	</ol>
-	<p><em>This is an <a href="https://www.11ty.dev/">Eleventy project</a> created from the <a href="https://github.com/11ty/eleventy-base-blog"><code>eleventy-base-blog</code> repo</a>.</em></p>
-</div>
-<!-- Stop deleting -->
-
-<h1 id="archive">Archive</h1>
+		<div class="container">
+			<aside class="aside">
+				<ul>
+					<li>
+						<div class="profile">
+							<picture><source type="image/avif" srcset="/eleventy-base-blog/blog/c_D2jwCpSE-460.avif 460w"><source type="image/webp" srcset="/eleventy-base-blog/blog/c_D2jwCpSE-460.webp 460w"><img loading="lazy" decoding="async" src="/eleventy-base-blog/blog/c_D2jwCpSE-460.jpeg" alt="seliakk" width="460" height="460"></picture>
+						</div>
+					</li>
+					<li>
+						<h2 id="s-kim-selinakk">S.KIM <small>@selinakk</small></h2>
+					</li>
+					<li>
+						<a class="pf__contact" href="https://github.com/selinakk" target="_blank">Github</a>
+						<a class="pf__contact" href="mailto:rosereaseoul@gmail.com">이메일</a>
+					</li>
+				</ul>
+				<footer>
+					<a href="/eleventy-base-blog/feed/feed.xml">Feed <i><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ff9214" d="M0 64C0 46.3 14.3 32 32 32c229.8 0 416 186.2 416 416c0 17.7-14.3 32-32 32s-32-14.3-32-32C384 253.6 226.4 96 32 96C14.3 96 0 81.7 0 64zM0 416a64 64 0 1 1 128 0A64 64 0 1 1 0 416zM32 160c159.1 0 288 128.9 288 288c0 17.7-14.3 32-32 32s-32-14.3-32-32c0-123.7-100.3-224-224-224c-17.7 0-32-14.3-32-32s14.3-32 32-32z"></path></svg></i></a>
+					<em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em>
+				</footer>
+			</aside>
+			<div id="skip" class="contents">
+					
+<h2 id="posts">Posts</h2>
 
 
 
@@ -326,36 +382,28 @@ header {
 
 	<li class="postlist-item">
 		<a href="/eleventy-base-blog/blog/fourthpost/" class="postlist-link">This is my fourth post</a>
-		<time class="postlist-date" datetime="2018-09-30">September 2018</time>
 	</li>
 
 	<li class="postlist-item">
 		<a href="/eleventy-base-blog/blog/thirdpost/" class="postlist-link">This is my third post.</a>
-		<time class="postlist-date" datetime="2018-08-24">August 2018</time>
 	</li>
 
 	<li class="postlist-item">
 		<a href="/eleventy-base-blog/blog/secondpost/" class="postlist-link">This is my second post with a much longer title.</a>
-		<time class="postlist-date" datetime="2018-07-04">July 2018</time>
 	</li>
 
 	<li class="postlist-item">
 		<a href="/eleventy-base-blog/blog/firstpost/" class="postlist-link">This is my first post.</a>
-		<time class="postlist-date" datetime="2018-05-01">May 2018</time>
 	</li>
 
 </ol>
 
 
 
-			</heading-anchors>
-		</main>
+			</div>
+		</div>
 
-		<footer>
-			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
-		</footer>
-
-		<!-- This page `/eleventy-base-blog/blog/` was built on 2024-10-06T04:42:33.072Z -->
-		<script type="module" src="/eleventy-base-blog/dist/rJ3_G-2ArF.js"></script>
+		<!-- This page `/eleventy-base-blog/blog/` was built on 2024-10-06T05:29:52.146Z -->
+		
 	</body>
 </html>
