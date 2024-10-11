@@ -5,21 +5,41 @@
   <subtitle>selinakk&#39;s Github Pages</subtitle>
   <link href="https://selinakk.github.io/feed/feed.xml" rel="self" />
   <link href="https://selinakk.github.io/" />
-  <updated>2024-10-09T00:00:00Z</updated>
+  <updated>2024-10-11T00:00:00Z</updated>
   <id>https://selinakk.github.io/</id>
   <author>
     <name>selinakk</name>
   </author>
   <entry>
+    <title>액정 수리비가 116만원이라고요?</title>
+    <link href="https://selinakk.github.io/blog/repairOrNot/" />
+    <updated>2024-10-11T00:00:00Z</updated>
+    <id>https://selinakk.github.io/blog/repairOrNot/</id>
+    <content type="html">&lt;p&gt;평소대로 노트북을 사용하던 중 갑자기 노트북 화면이 검어지더니 먹통이 됐다&lt;br&gt;
+수차례 강제종료 하고 다시 켜봐도 똑같다&lt;br&gt;
+부팅음은 나는데 화면이 까매.. 왜 안 켜져?&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;애플에 고장 문의를 했는데 상담원이 알려준 대로 전원버튼을 길게 눌러 시동옵션을 시도해 봐도 안 먹힌다&lt;br&gt;
+최종 프로젝트 이제 코딩 들어가야 하는데 환장&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;결국 수리 예약 후 공식 서비스센터인 ANTZ에 다녀왔다&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;다녀오기만 했다&lt;br&gt;
+수리 견적 116만 7천 원이 나왔기 때문이다&lt;br&gt;
+엔지니어분이 부팅은 된다며 외부 디스플레이에 직접 꽂아서 보여주셨다 디스플레이가 문제라고 했다&lt;br&gt;
+더 큰 문제는 액정만 쏙 갈면 되는 게 아니라 디스플레이를 바꾸려면 윗판+힌지 이렇게 다 갈아야 한다는 것&lt;br&gt;
+최종 문제는 그 비용이 116만 원이 넘는다는 것&lt;br&gt;
+철 한참 지난 OTL을 쓰고 싶은 심정&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;수리를 할지, 윈도우 노트북을 새로 살지 가성비를 따져보는 시간이 필요하다&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
     <title>웬 Selina?</title>
     <link href="https://selinakk.github.io/blog/whySelina/" />
     <updated>2024-10-09T00:00:00Z</updated>
     <id>https://selinakk.github.io/blog/whySelina/</id>
-    <content type="html">&lt;p&gt;외국에 잠깐 살았을 때 영어 이름을 본명 끝 글자로 했더니 외국인들이 발음을 어려워했다
-정정해 주기도 귀찮고 되묻는 경우도 많아서 현지 이름을 만들게 됐다
-내 이름 ㅅ에 맞춰 S로 시작하는 영어 이름 몇 개를 추려서 투표를 받았는데 그 결과가 셀리나다
-(Selena는 너무 저스틴 비버 구여자친구 이름 같아서 모음 하나를 바꿔 Selina로 함)&lt;/p&gt;
-&lt;p&gt;여기는 한국이지만 적당한 익명성+애착이 있어 웹상에서 사용하고 있다&lt;/p&gt;
+    <content type="html">&lt;p&gt;외국에 잠깐 살았을 때 영어 이름을 본명 끝 글자로 했더니 외국인들이 발음을 어려워했다&lt;br&gt;
+정정해 주기도 귀찮고 되묻는 경우도 많아서 현지 이름을 만들게 됐다&lt;br&gt;
+내 이름 ㅅ에 맞춰 S로 시작하는 영어 이름 몇 개를 추려서 투표를 받았는데 그 결과가 셀리나다&lt;br&gt;
+(Selena는 너무 저스틴 비버 구여자친구 이름 같아서 모음 하나를 바꿔 Selina로 함)&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;여기는 한국이지만 적당한 익명성+애착이 있어 웹상에서 사용하고 있다&lt;br&gt;&lt;/p&gt;
 &lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://selinakk.github.io/blog/whySelina/l-BZhcs5eu-454.avif 454w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://selinakk.github.io/blog/whySelina/l-BZhcs5eu-454.webp 454w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://selinakk.github.io/blog/whySelina/l-BZhcs5eu-454.png&quot; alt=&quot;Miss Selina Kim&quot; width=&quot;454&quot; height=&quot;340&quot;&gt;&lt;/picture&gt;
 </content>
   </entry>
