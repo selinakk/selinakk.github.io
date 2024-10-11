@@ -7,10 +7,7 @@ body{
     max-width: 84rem;
 }
 dl,li,menu,ol,ul {list-style: none;}
-header > h1 {
-    margin: 1rem;
-    font-size: 1.5rem;
-}
+header > h1 { margin: 0;}
 .container{
     display: flex;
     justify-content: space-between;
@@ -71,4 +68,11 @@ aside.aside h2 small {
     padding: 1rem;
     overflow-y: auto;
 }
+.categories ~ ul{padding-left: 0;}
+.links-nextprev {margin-top: 3em;}
 footer i svg {width:1rem;}
+
+@media screen and (max-width: 768px) {
+    header {justify-content: space-between;}
+    aside.aside {display: none;}
+}
