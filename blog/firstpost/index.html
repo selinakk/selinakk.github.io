@@ -275,11 +275,6 @@ main :first-child {
 header {
 	border-bottom: 1px dashed var(--color-gray-20);
 }
-header:after {
-	content: "";
-	display: table;
-	clear: both;
-}
 
 .links-nextprev {
 	display: flex;
@@ -334,10 +329,10 @@ header {
 	gap: 1em .5em;
 	flex-wrap: wrap;
 	align-items: center;
-	padding: 1em;
+	padding: 1.5rem 1rem;
 }
 .home-link {
-	font-size: 1.7rem;
+	font-size: 1.5rem;
 	font-weight: 700;
 	margin-right: 2em;
 }
@@ -438,10 +433,7 @@ body{
     max-width: 84rem;
 }
 dl,li,menu,ol,ul {list-style: none;}
-header > h1 {
-    margin: 1rem;
-    font-size: 1.5rem;
-}
+header > h1 { margin: 0;}
 .container{
     display: flex;
     justify-content: space-between;
@@ -502,7 +494,14 @@ aside.aside h2 small {
     padding: 1rem;
     overflow-y: auto;
 }
-footer i svg {width:1rem;}</style>
+.categories ~ ul{padding-left: 0;}
+.links-nextprev {margin-top: 3em;}
+footer i svg {width:1rem;}
+
+@media screen and (max-width: 768px) {
+    header {justify-content: space-between;}
+    aside.aside {display: none;}
+}</style>
 
 	</head>
 	<body>
@@ -568,7 +567,7 @@ footer i svg {width:1rem;}</style>
 			</div>
 		</div>
 
-		<!-- This page `/blog/firstpost/` was built on 2024-10-11T01:26:21.846Z -->
+		<!-- This page `/blog/firstpost/` was built on 2024-10-11T01:49:18.877Z -->
 		
 	</body>
 </html>

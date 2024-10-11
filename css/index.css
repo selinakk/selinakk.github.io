@@ -97,11 +97,6 @@ main :first-child {
 header {
 	border-bottom: 1px dashed var(--color-gray-20);
 }
-header:after {
-	content: "";
-	display: table;
-	clear: both;
-}
 
 .links-nextprev {
 	display: flex;
@@ -156,10 +151,10 @@ header {
 	gap: 1em .5em;
 	flex-wrap: wrap;
 	align-items: center;
-	padding: 1em;
+	padding: 1.5rem 1rem;
 }
 .home-link {
-	font-size: 1.7rem;
+	font-size: 1.5rem;
 	font-weight: 700;
 	margin-right: 2em;
 }
