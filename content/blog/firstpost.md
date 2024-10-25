@@ -11,7 +11,8 @@ Bring to the table win-win survival strategies to ensure proactive domination. A
 ## Section Header
 
 Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.
-
+<a href="/blog/firstpost.md">First post</a>
+<a href="blog/thirdpost.md">Third post</a>
 ```diff-js
  // this is a command
  function myCommand() {
@@ -23,3 +24,8 @@ Capitalize on low hanging fruit to identify a ballpark value added activity to b
  // Test with a line break above this line.
  console.log('Test');
 ```
+
+### Heading with a [link](#code)
+
+<a href="/blog/firstpost.md">First post</a>
+<a href="blog/thirdpost.md">Third post</a>
