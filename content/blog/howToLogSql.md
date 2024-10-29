@@ -47,7 +47,7 @@ src/main/resources에 **logback-spring.xml(혹은 logback.xml)** 파일 생성
  
 저는 Maven 빌드라 **pom.xml에 log4jdbc-log4j2 의존성**을 추가
 
-```
+```js
 <dependency>
     <groupId>org.bgee.log4jdbc-log4j2</groupId>
     <artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
@@ -57,7 +57,7 @@ src/main/resources에 **logback-spring.xml(혹은 logback.xml)** 파일 생성
 
 그다음은 src/main/resources/**application.properties** 파일에 아래의 내용을 추가한다
 
-```
+```js
 spring.datasource.driver-class-name=net.sf.log4jdbc.sql.jdbcapi.DriverSpy
 spring.datasource.url=jdbc:log4jdbc:mysql://localhost:3306/your_database
 spring.datasource.username=사용자명
@@ -82,7 +82,7 @@ jdbc:**log4jdb:c**mysql://localhost:3306/your_database<br/>
  
 그리고 src/main/resources/**log4jdbc.log4j2.properties** 파일도 필요하다 내용은 아래 두줄이다
 
-```
+```js
 log4jdbc.spylogdelegator.name=net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator
 log4jdbc.dump.sql.maxlinelength=0
 ```
@@ -110,13 +110,14 @@ resultsettable=INFO는 쿼리 실행 결과를 테이블로 보여준다
 이렇게 하면 sqltiming에서 쿼리문이 실행시간과 함께 한 번만 출력된다<br/><br/>
  
 마찬가지로 OFF를 해두는 게 좋은 나머지 세 가지를 보면
-```
+```js
 logging.level.jdbc.audit=OFF
 logging.level.jdbc.resultset=OFF
 logging.level.jdbc.connection=OFF
 ```
 OFF가 가득한 게 왠지 생략할 수 있을 것 같이 생겼다<br/>
 하지만 저 세 라인을 빼는 순간 엄청 빼곡한 로그가 밀려온다<br/>
+
 <img src="./assets/img_howToLogSql_logs.png" alt="audit, resultset log">
 아무래도 나노단위의 SQL 디버깅이 필요한 경우에만 활성화하는 게 좋겠다<br/><br/>
 
