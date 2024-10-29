@@ -5,13 +5,121 @@
   <subtitle>selinakk&#39;s Github Pages</subtitle>
   <link href="https://selinakk.github.io/feed/feed.xml" rel="self" />
   <link href="https://selinakk.github.io/" />
-  <updated>2024-10-11T00:00:00Z</updated>
+  <updated>2024-10-24T00:00:00Z</updated>
   <id>https://selinakk.github.io/</id>
   <author>
     <name>selinakk</name>
   </author>
   <entry>
-    <title>액정 수리비가 116만원이라고요?</title>
+    <title>스프링부트에서 SQL 로그 출력하기 - logback, log4jdbc</title>
+    <link href="https://selinakk.github.io/blog/howToLogSql/" />
+    <updated>2024-10-24T00:00:00Z</updated>
+    <id>https://selinakk.github.io/blog/howToLogSql/</id>
+    <content type="html">&lt;p&gt;환경: macOS, Spring Boot 3.3.4, Tomcat 10.1.31 (Maven 프로젝트)&lt;br&gt;&lt;br&gt;
+검색을 실행했을 때 목록에는 2건이 출력되는데, 결과 건수는 3개가 카운트되어서 쿼리가 어떻게 처리가 되는지 궁금했다&lt;br&gt;
+처음에 구현했을 때는 잘됐는데 테이블을 조인하다 보니 어디선가 꼬인 것 같다&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;SQL 로그를 출력하는 방법을 열심히 검색&lt;br&gt;
+이것저것 따라해 보고 성공
+&lt;br&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;h2 id=&quot;1-logback&quot;&gt;방법1: logback&lt;/h2&gt;
+&lt;p&gt;src/main/resources에 &lt;strong&gt;logback-spring.xml(혹은 logback.xml)&lt;/strong&gt; 파일 생성&lt;/p&gt;
+&lt;pre class=&quot;language-js&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;//중요한 건 패키지명을 본인 프로젝트에 맞게 변경해야 함 (&amp;lt;logger name=&quot;com.tmtb.pageon&quot; 이 부분)&lt;/span&gt;
+&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt;xml version&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;1.0&quot;&lt;/span&gt; encoding&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;configuration debug&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;appender name&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;console&quot;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;ch.qos.logback.core.ConsoleAppender&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+        &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;encoder&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+            &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;charset&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;UTF&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;charset&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+            &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Pattern&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt;d &lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt;5p &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt;c&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt;m&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt;n&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;Pattern&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+        &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;encoder&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;appender&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;logger name&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;com.tmtb.pageon&quot;&lt;/span&gt; level&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;DEBUG&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+        &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;appender&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;ref ref&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;console&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;logger&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;logger name&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;jdbc.sqlonly&quot;&lt;/span&gt; level&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;INFO&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+        &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;appender&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;ref ref&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;console&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;logger&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;logger name&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;jdbc.resultsettable&quot;&lt;/span&gt; level&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;INFO&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+        &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;appender&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;ref ref&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;console&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;logger&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;configuration&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;이제 실행하면 SQL 쿼리가 찍힌다!
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://selinakk.github.io/blog/howToLogSql/QDb34FmZiQ-1280.avif 1280w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://selinakk.github.io/blog/howToLogSql/QDb34FmZiQ-1280.webp 1280w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://selinakk.github.io/blog/howToLogSql/QDb34FmZiQ-1280.png&quot; alt=&quot;SQL log by logback&quot; width=&quot;1280&quot; height=&quot;142&quot;&gt;&lt;/picture&gt;
+&lt;br&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;h2 id=&quot;2-log4jdbc-log4j2&quot;&gt;방법2: log4jdbc-log4j2&lt;/h2&gt;
+&lt;h3 id=&quot;log4jdbc-log4j2-sql&quot;&gt;log4jdbc-log4j2로 콘솔에 가독성 좋은 테이블 형태로 SQL 실행 결과를 출력할 수 있게 해 본다&lt;/h3&gt;
+&lt;p&gt;저는 Maven 빌드라 &lt;strong&gt;pom.xml에 log4jdbc-log4j2 의존성&lt;/strong&gt;을 추가&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.bgee.log4jdbc-log4j2&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;log4jdbc-log4j2-jdbc4.1&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;1.16&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;그다음은 src/main/resources/&lt;strong&gt;application.properties&lt;/strong&gt; 파일에 아래의 내용을 추가한다&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;spring.datasource.driver-class-name=net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+spring.datasource.url=jdbc:log4jdbc:mysql://localhost:3306/your_database
+spring.datasource.username=사용자명
+spring.datasource.password=사용자비번
+
+logging.level.jdbc.sqlonly=DEBUG
+logging.level.jdbc.sqltiming=INFO
+logging.level.jdbc.resultsettable=INFO
+logging.level.jdbc.audit=OFF
+logging.level.jdbc.resultset=OFF
+logging.level.jdbc.connection=OFF
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;설정하면 이런 모습이다
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://selinakk.github.io/blog/howToLogSql/92YDg15IwS-1280.avif 1280w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://selinakk.github.io/blog/howToLogSql/92YDg15IwS-1280.webp 1280w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://selinakk.github.io/blog/howToLogSql/92YDg15IwS-1280.png&quot; alt=&quot;application.properties 내 log4jdbc 설정&quot; width=&quot;1280&quot; height=&quot;788&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;p&gt;url에 주목하시라
+기존의 spring,datasource.url이&lt;br&gt;
+jdbc:mysql://localhost:3306/your_database 이었다면&lt;br&gt;
+jdbc:&lt;strong&gt;log4jdb:c&lt;/strong&gt;mysql://localhost:3306/your_database&lt;br&gt;
+이렇게 **log4jdbc:**가 추가되면 된다 Mysql 외에 다른 DBMS도 거의 동일&lt;/p&gt;
+&lt;p&gt;그리고 src/main/resources/&lt;strong&gt;log4jdbc.log4j2.properties&lt;/strong&gt; 파일도 필요하다 내용은 아래 두줄이다&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;log4jdbc.spylogdelegator.name=net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator
+log4jdbc.dump.sql.maxlinelength=0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;위 내용을 그냥 application.properties에 몰아넣었더니 이상하게 log4jdbc 설정 속성들이 안 먹어서 순순히 log4jdbc.log4j2.properties로 분리했다&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;다시 application.properties로 돌아가서 log4jdbc 설정을 살펴보겠다&lt;br&gt;
+logging.level.jdbc.sqlonly=DEBUG
+&lt;strong&gt;logging.level.jdbc.sqltiming=INFO
+logging.level.jdbc.resultsettable=INFO&lt;/strong&gt;
+이 세 라인이 중요하다&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;sqlonly=DEBUG는 아래와 같이 파라미터를 포함한 쿼리문을 보여주고
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://selinakk.github.io/blog/howToLogSql/JdpYYuTgWo-1280.avif 1280w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://selinakk.github.io/blog/howToLogSql/JdpYYuTgWo-1280.webp 1280w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://selinakk.github.io/blog/howToLogSql/JdpYYuTgWo-1280.png&quot; alt=&quot;sqlonly log&quot; width=&quot;1280&quot; height=&quot;277&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;p&gt;sqltiming=INFO는 쿼리문+쿼리 실행에 소요된 시간 {executed in ..}
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://selinakk.github.io/blog/howToLogSql/30KkR13ajV-1280.avif 1280w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://selinakk.github.io/blog/howToLogSql/30KkR13ajV-1280.webp 1280w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://selinakk.github.io/blog/howToLogSql/30KkR13ajV-1280.png&quot; alt=&quot;sqltiming log&quot; width=&quot;1280&quot; height=&quot;498&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;p&gt;resultsettable=INFO는 쿼리 실행 결과를 테이블로 보여준다
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://selinakk.github.io/blog/howToLogSql/sPhFKDCejE-1280.avif 1280w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://selinakk.github.io/blog/howToLogSql/sPhFKDCejE-1280.webp 1280w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://selinakk.github.io/blog/howToLogSql/sPhFKDCejE-1280.png&quot; alt=&quot;resultset table log&quot; width=&quot;1280&quot; height=&quot;397&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;p&gt;다만 실행 쿼리문이 sqlonly, sqltiming에서 중복으로 출력되기 때문에
+나는 &lt;strong&gt;logging.level.jdbc.sqlonly=OFF (OFF로 명시적으로 비활성화해야 함)로 바꿨다&lt;/strong&gt;&lt;br&gt;
+이렇게 하면 sqltiming에서 쿼리문이 실행시간과 함께 한 번만 출력된다&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;마찬가지로 OFF를 해두는 게 좋은 나머지 세 가지를 보면&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;logging.level.jdbc.audit=OFF
+logging.level.jdbc.resultset=OFF
+logging.level.jdbc.connection=OFF
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;OFF가 가득한 게 왠지 생략할 수 있을 것 같이 생겼다&lt;br&gt;
+하지만 저 세 라인을 빼는 순간 엄청 빼곡한 로그가 밀려온다&lt;br&gt;
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://selinakk.github.io/blog/howToLogSql/4pr-8Ivzxf-1280.avif 1280w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://selinakk.github.io/blog/howToLogSql/4pr-8Ivzxf-1280.webp 1280w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://selinakk.github.io/blog/howToLogSql/4pr-8Ivzxf-1280.png&quot; alt=&quot;audit, resultset log&quot; width=&quot;1280&quot; height=&quot;596&quot;&gt;&lt;/picture&gt;
+아무래도 나노단위의 SQL 디버깅이 필요한 경우에만 활성화하는 게 좋겠다&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;최종적으로 이런 모습이다&lt;br&gt;
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://selinakk.github.io/blog/howToLogSql/WnM8JT6H8E-1280.avif 1280w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://selinakk.github.io/blog/howToLogSql/WnM8JT6H8E-1280.webp 1280w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://selinakk.github.io/blog/howToLogSql/WnM8JT6H8E-1280.png&quot; alt=&quot;sqltiming+result set table log&quot; width=&quot;1280&quot; height=&quot;1188&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;p&gt;일부 컬럼이 [unread]로 나오는 이유는 ResultSet이 실제로 읽히지 않은 컬럼을 [unread]로 표시하는 log4jdbc의 특성이라고 한다&lt;br&gt;
+디버깅 차원에서는 무시해도 될 것 같다&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h2 id=&quot;&quot;&gt;정리&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;logback&lt;/strong&gt;: 일반적인 로깅을 처리하면서, SQL 쿼리 로그도 함께 관리할 수 있습니다. 기본 로그 및 다양한 애플리케이션 이벤트를 포함한 로깅이 가능하므로 프로젝트 전반적인 로그 관리에 유리합니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;log4jdbc-log4j2&lt;/strong&gt;: SQL 쿼리와 결과를 테이블 형식으로 출력하고, 쿼리 실행 시간, 파라미터, 그리고 결과 테이블을 좀 더 가독성 있게 출력하는 데 유용합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;SQL 로그만 필요하면 후자를, 전반적인 로그가 필요하면 전자를 적용하는 게 좋을 듯&lt;br&gt;
+두 개를 같이 사용한다면 logback에서 sql로그를 최소화해 중복을 줄이는 것이 바람직하겠다&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>맥북 액정 수리비가 116만원이라고요?</title>
     <link href="https://selinakk.github.io/blog/repairOrNot/" />
     <updated>2024-10-11T00:00:00Z</updated>
     <id>https://selinakk.github.io/blog/repairOrNot/</id>
@@ -31,7 +139,7 @@
 </content>
   </entry>
   <entry>
-    <title>웬 Selina?</title>
+    <title>Selina?</title>
     <link href="https://selinakk.github.io/blog/whySelina/" />
     <updated>2024-10-09T00:00:00Z</updated>
     <id>https://selinakk.github.io/blog/whySelina/</id>
@@ -41,32 +149,6 @@
 (Selena는 너무 저스틴 비버 구여자친구 이름 같아서 모음 하나를 바꿔 Selina로 함)&lt;br&gt;&lt;br&gt;&lt;/p&gt;
 &lt;p&gt;여기는 한국이지만 적당한 익명성+애착이 있어 웹상에서 사용하고 있다&lt;br&gt;&lt;/p&gt;
 &lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://selinakk.github.io/blog/whySelina/l-BZhcs5eu-454.avif 454w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://selinakk.github.io/blog/whySelina/l-BZhcs5eu-454.webp 454w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://selinakk.github.io/blog/whySelina/l-BZhcs5eu-454.png&quot; alt=&quot;Miss Selina Kim&quot; width=&quot;454&quot; height=&quot;340&quot;&gt;&lt;/picture&gt;
-</content>
-  </entry>
-  <entry>
-    <title>This is my first post.</title>
-    <link href="https://selinakk.github.io/blog/firstpost/" />
-    <updated>2018-05-01T00:00:00Z</updated>
-    <id>https://selinakk.github.io/blog/firstpost/</id>
-    <content type="html">&lt;p&gt;Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.&lt;/p&gt;
-&lt;p&gt;Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.&lt;/p&gt;
-&lt;h2 id=&quot;section-header&quot;&gt;Section Header&lt;/h2&gt;
-&lt;p&gt;Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.
-&lt;a href=&quot;https://selinakk.github.io/blog/firstpost/&quot;&gt;First post&lt;/a&gt;
-&lt;a href=&quot;https://selinakk.github.io/blog/firstpost/blog/thirdpost.md&quot;&gt;Third post&lt;/a&gt;&lt;/p&gt;
-&lt;pre class=&quot;language-diff-js&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-diff-js&quot;&gt;&lt;span class=&quot;token unchanged language-js&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// this is a command&lt;/span&gt;
-&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;myCommand&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;span class=&quot;token inserted-sign inserted language-js&quot;&gt;&lt;span class=&quot;token prefix inserted&quot;&gt;+&lt;/span&gt;  &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; counter &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;span class=&quot;token deleted-sign deleted language-js&quot;&gt;&lt;span class=&quot;token prefix deleted&quot;&gt;-&lt;/span&gt;  &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; counter &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;span class=&quot;token unchanged language-js&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;  counter&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
-&lt;/span&gt;
-&lt;span class=&quot;token unchanged language-js&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// Test with a line break above this line.&lt;/span&gt;
-&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;Test&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&quot;heading-with-a-link&quot;&gt;Heading with a &lt;a href=&quot;https://selinakk.github.io/blog/firstpost/#code&quot;&gt;link&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;https://selinakk.github.io/blog/firstpost/&quot;&gt;First post&lt;/a&gt;
-&lt;a href=&quot;https://selinakk.github.io/blog/firstpost/blog/thirdpost.md&quot;&gt;Third post&lt;/a&gt;&lt;/p&gt;
 </content>
   </entry>
 </feed>

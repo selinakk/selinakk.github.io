@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>웬 Selina?</title>
+		<title>Selina?</title>
 		<meta name="description" content="내가 Selina가 된 이유">
 		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="selinakk.github.io">
 		
@@ -176,9 +176,23 @@ pre[class*="language-diff-"] {
 	color: inherit; /* override del, ins, mark defaults */
 }
 /* This is an arbitrary CSS string added to the bundle */
+@font-face {
+	font-family: 'Space Grotesk';
+	font-style: normal;
+	font-weight: 300 700;
+	font-display: swap;
+	src: url(https://fonts.gstatic.com/s/spacegrotesk/v16/V8mDoQDjQSkFtoMM3T6r8E7mPbF4C_k3HqU.woff2) format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 /* Defaults */
 :root {
-	--font-family: -apple-system, system-ui, sans-serif;
+	--font-family: 'Space Grotesk','SUIT-Regular', -apple-system, system-ui, sans-serif;
 	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
 }
 
@@ -192,7 +206,7 @@ pre[class*="language-diff-"] {
 
 	--text-color: var(--color-gray-90);
 	--text-color-link: #082840;
-	--text-color-link-active: #4663eb;
+	--text-color-link-active: #24ffc5;
 	--text-color-link-visited: #17050F;
 
 	--syntax-tab-size: 2;
@@ -205,9 +219,9 @@ pre[class*="language-diff-"] {
 		--color-gray-90: #dad8d8;
 
 		/* --text-color is assigned to --color-gray-_ above */
-		--text-color-link: #4663eb;
-		--text-color-link-active: #6969f7;
-		--text-color-link-visited: #a6a6f8;
+		--text-color-link: #24ffc5;
+		--text-color-link-active: #4663eb;
+		--text-color-link-visited: #24ffc5;
 
 		--background-color: #15202b;
 	}
@@ -270,10 +284,6 @@ a[href]:active {
 
 main :first-child {
 	margin-top: 0;
-}
-
-header {
-	border-bottom: 1px dashed var(--color-gray-20);
 }
 
 .links-nextprev {
@@ -348,36 +358,44 @@ header {
 	list-style: none;
 }
 .nav-item {
-	display: inline-block;
-	margin-right: 1em;
+	display: inline-flex;
+	padding: .2rem .4rem;
+	margin-right: .2rem;
+	background-color: #f2f2f2;
+	font-size: .9em;
 }
 .nav-item a[href]:not(:hover) {
 	text-decoration: none;
 }
-.nav a[href][aria-current="page"] {
+/* .nav a[href][aria-current="page"] {
 	text-decoration: underline;
-}
+} */
 
 /* Posts list */
 .postlist {
 	list-style: none;
 	padding: 0;
-	padding-left: 1.5rem;
+	/* padding-left: 1.5rem; */
 }
 .postlist-item {
 	display: flex;
-	flex-wrap: wrap;
+	padding:10px 0;
+	margin:0;
+	/* flex-wrap: wrap; */
 	align-items: baseline;
 	counter-increment: start-from -1;
-	margin-bottom: 1em;
+	border-bottom: 1px solid #1e1e1e;
 }
 .postlist-item:before {
+	position: relative;
+	top: -5.4px;
 	display: inline-block;
-	pointer-events: none;
-	content: "" counter(start-from, decimal-leading-zero) ". ";
-	line-height: 100%;
-	text-align: right;
-	margin-left: -1.5rem;
+	padding-right:.7rem;
+	/* pointer-events: none; */
+	content: "" counter(start-from, decimal-leading-zero) "";
+	/* line-height: 100%; */
+	/* text-align: right; */
+	/* margin-left: -1.5rem; */
 }
 .postlist-date,
 .postlist-item:before {
@@ -388,14 +406,16 @@ header {
 	word-spacing: -0.5px;
 }
 .postlist-link {
-	font-size: 1.1875em; /* 19px /16 */
-	font-weight: 700;
+	font-size: 2em;
+	font-size: calc(20px + ((34 - 20) * (100vw - 390px) / (1728 - 390)));;
+	/* font-weight: 700; */
 	flex-basis: calc(100% - 1.5rem);
-	padding-left: .25em;
+	/* padding-left: .25em;
 	padding-right: .5em;
 	text-underline-position: from-font;
 	text-underline-offset: 0;
-	text-decoration-thickness: 1px;
+	text-decoration-thickness: 1px; */
+	text-decoration: none;
 }
 .postlist-item-active .postlist-link {
 	font-weight: bold;
@@ -407,7 +427,7 @@ header {
 	align-items: center;
 	justify-content: center;
 	text-transform: capitalize;
-	font-style: italic;
+	/* font-style: italic; */
 }
 .postlist-item > .post-tag {
 	align-self: center;
@@ -426,76 +446,48 @@ header {
 	margin-right: 1em;
 }
 body{
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
     width: 100%;
-    max-width: 84rem;
+    max-width: 87rem;
 }
 dl,li,menu,ol,ul {list-style: none;}
+picture img {
+    display: block;
+    width: 100%;
+    max-width: 40rem;
+    height: auto;
+}
 header > h1 { margin: 0;}
 .container{
     display: flex;
     justify-content: space-between;
 }
 aside.aside{
-    display: flex;
-    width: 16rem;
-    padding: 3rem 2rem;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: column;
-    border-right: 1px dashed var(--color-gray-20);
-    text-align: center;
+    min-width: 10rem;
+    padding: 1rem;
 }
-aside.aside ul {
-    width: 100%;
-    padding: 0;
-    margin: 0;
-}
-aside.aside h2 small {
-    font-weight: normal;
-    font-size: 60%;
-}
-.aside footer > a {
-    display: block;
-    padding: 0.4rem;
-}
-.profile {
-    width: 8rem;
-    height: 8rem;
-    margin: 0 auto;
-    border-radius: 50%;
-    overflow: hidden;
-}
-.profile * {
-    width: 100%;
-    height: 100%;
-}
-.pf__contact {
-    display: inline-flex;
-    width: 100%;
-    padding: 5px 1rem;
-    margin-bottom: 5px;
-    border:1px solid #d1d9e0;
-    border-radius: 6px;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 0.9rem;
-    white-space: nowrap;
-    background-color: #f6f8fa;
-}
+aside.aside > h2 {margin-bottom:.3rem;}
 .contents{
     width:100%;
-    max-width: 60rem;
-    height: 90vh;
-    min-height: 90vh;
+    max-width: 70rem;
+    /* height: 90vh;
+    min-height: 90vh; */
     padding: 1rem;
     overflow-y: auto;
 }
-.categories ~ ul{padding-left: 0;}
 .links-nextprev {margin-top: 3em;}
+.catelist {
+    padding:0;
+    margin: 0;
+}
+.catelist a{
+    padding: .2rem 0;
+    text-decoration: none;
+}
+.catelist svg{
+    margin-right: 4.5px;
+    vertical-align: middle;
+    opacity: .7;
+}
 footer i svg {width:1rem;}
 
 @media screen and (max-width: 768px) {
@@ -508,39 +500,48 @@ footer i svg {width:1rem;}
 		<a href="#skip" class="visually-hidden">Skip to main content</a>
 
 		<header>
-			<h1 id="selinakk-github-io"><a href="/" class="home-link">selinakk.github.io</a></h1>
 			<nav>
 				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
 				<ul class="nav">
-					<li class="nav-item"><a href="/">Home🏠</a></li>
-					<li class="nav-item"><a href="/blog/">Posts💻</a></li>
+					<li class="nav-item"><a href="/">HOME</a></li>
+					<li class="nav-item"><a href="/blog/">POSTS</a></li>
+				<li class="nav-item"><a href="//github.com/selinakk" target="_blank">GITHUB</a></li>
+				<li class="nav-item"><a href="/feed/feed.xml">RSS</a></li>
 				</ul>
 			</nav>
 		</header>
 		<div class="container">
-			<aside class="aside">
-				<ul>
-					<li>
-						<div class="profile">
-							<picture><source type="image/avif" srcset="/blog/whySelina/c_D2jwCpSE-460.avif 460w"><source type="image/webp" srcset="/blog/whySelina/c_D2jwCpSE-460.webp 460w"><img loading="lazy" decoding="async" src="/blog/whySelina/c_D2jwCpSE-460.jpeg" alt="seliakk" width="460" height="460"></picture>
-						</div>
-					</li>
-					<li>
-						<h2 id="s-kim-selinakk">S.KIM <small>@selinakk</small></h2>
-					</li>
-					<li>
-						<a class="pf__contact" href="https://github.com/selinakk" target="_blank">Github</a>
-						<a class="pf__contact" href="mailto:rosereaseoul@gmail.com">이메일</a>
-					</li>
-				</ul>
-				<footer>
-					<a href="/feed/feed.xml">Feed <i><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ff9214" d="M0 64C0 46.3 14.3 32 32 32c229.8 0 416 186.2 416 416c0 17.7-14.3 32-32 32s-32-14.3-32-32C384 253.6 226.4 96 32 96C14.3 96 0 81.7 0 64zM0 416a64 64 0 1 1 128 0A64 64 0 1 1 0 416zM32 160c159.1 0 288 128.9 288 288c0 17.7-14.3 32-32 32s-32-14.3-32-32c0-123.7-100.3-224-224-224c-17.7 0-32-14.3-32-32s14.3-32 32-32z"></path></svg></i></a>
-					<em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em>
-				</footer>
-			</aside>
+		<aside class="aside">
+		<h2 id="">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder2-open" viewBox="0 0 16 16">
+				<path d="M1 3.5A1.5 1.5 0 0 1 2.5 2h2.764c.958 0 1.76.56 2.311 1.184C7.985 3.648 8.48 4 9 4h4.5A1.5 1.5 0 0 1 15 5.5v.64c.57.265.94.876.856 1.546l-.64 5.124A2.5 2.5 0 0 1 12.733 15H3.266a2.5 2.5 0 0 1-2.481-2.19l-.64-5.124A1.5 1.5 0 0 1 1 6.14zM2 6h12v-.5a.5.5 0 0 0-.5-.5H9c-.964 0-1.71-.629-2.174-1.154C6.374 3.334 5.82 3 5.264 3H2.5a.5.5 0 0 0-.5.5zm-.367 1a.5.5 0 0 0-.496.562l.64 5.124A1.5 1.5 0 0 0 3.266 14h9.468a1.5 1.5 0 0 0 1.489-1.314l.64-5.124A.5.5 0 0 0 14.367 7z"></path>
+			</svg>
+		</h2>
+			<ul class="catelist">
+			
+				
+				<li>
+					ㄴ
+					<a href="/tags/backend/" class="post-tag">Backend</a>
+				</li>
+			
+				
+				<li>
+					ㄴ
+					<a href="/tags/blog/" class="post-tag">Blog</a>
+				</li>
+			
+				
+				<li>
+					ㄴ
+					<a href="/tags/about-me/" class="post-tag">About me</a>
+				</li>
+			
+			</ul>
+		</aside>
 			<div id="skip" class="contents">
 					
-<h2 id="selina">웬 Selina?</h2>
+<h2 id="selina">Selina?</h2>
 
 <ul class="post-metadata">
 	<li><a href="/tags/about-me/" class="post-tag">About me</a></li>
@@ -553,13 +554,13 @@ footer i svg {width:1rem;}
 <p>여기는 한국이지만 적당한 익명성+애착이 있어 웹상에서 사용하고 있다<br></p>
 <picture><source type="image/avif" srcset="/blog/whySelina/l-BZhcs5eu-454.avif 454w"><source type="image/webp" srcset="/blog/whySelina/l-BZhcs5eu-454.webp 454w"><img loading="lazy" decoding="async" src="/blog/whySelina/l-BZhcs5eu-454.png" alt="Miss Selina Kim" width="454" height="340"></picture>
 
-<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/firstpost/">This is my first post.</a></li><li class="links-nextprev-next">Next →<br><a href="/blog/repairOrNot/">액정 수리비가 116만원이라고요?</a></li>
+<ul class="links-nextprev"><li class="links-nextprev-next">Next →<br><a href="/blog/repairOrNot/">맥북 액정 수리비가 116만원이라고요?</a></li>
 </ul>
 
 			</div>
 		</div>
 
-		<!-- This page `/blog/whySelina/` was built on 2024-10-25T05:19:05.709Z -->
+		<!-- This page `/blog/whySelina/` was built on 2024-10-29T09:03:45.082Z -->
 		
 	</body>
 </html>
