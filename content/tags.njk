@@ -1,6 +1,6 @@
 <h2>Categories</h2>
 
-<ul>
+<ul class="catelist">
 {% for tag in collections | getKeys | filterTagList %}
 	{% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
 	<li><a href="{{ tagUrl }}" class="post-tag">{{ tag }}</a></li>

@@ -1,5 +1,5 @@
 ---
-title: 웬 Selina?
+title: Selina?
 description: 내가 Selina가 된 이유
 date: 2024-10-09
 tags: About me

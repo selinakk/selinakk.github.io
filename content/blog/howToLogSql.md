@@ -10,7 +10,8 @@ tags: Backend
  
 SQL 로그를 출력하는 방법을 열심히 검색<br/>
 이것저것 따라해 보고 성공
-
+<br/>
+<br/>
 ## 방법1: logback
 
 src/main/resources에 **logback-spring.xml(혹은 logback.xml)** 파일 생성
@@ -39,7 +40,8 @@ src/main/resources에 **logback-spring.xml(혹은 logback.xml)** 파일 생성
 
 이제 실행하면 SQL 쿼리가 찍힌다!
 <img src="./assets/img_howToLogSql_logback.png" alt="SQL log by logback">
-
+<br/>
+<br/>
 ## 방법2: log4jdbc-log4j2
 ### log4jdbc-log4j2로 콘솔에 가독성 좋은 테이블 형태로 SQL 실행 결과를 출력할 수 있게 해 본다
  
@@ -73,9 +75,9 @@ logging.level.jdbc.connection=OFF
 <img src="./assets/img_howToLogSql_props.png" alt="application.properties 내 log4jdbc 설정">
 
 url에 주목하시라
-기존의 spring,datasource.url이
-jdbc:mysql://localhost:3306/your_database 이었다면
-jdbc:**log4jdb:c**mysql://localhost:3306/your_database
+기존의 spring,datasource.url이<br/>
+jdbc:mysql://localhost:3306/your_database 이었다면<br/>
+jdbc:**log4jdb:c**mysql://localhost:3306/your_database<br/>
 이렇게 **log4jdbc:**가 추가되면 된다 Mysql 외에 다른 DBMS도 거의 동일
  
 그리고 src/main/resources/**log4jdbc.log4j2.properties** 파일도 필요하다 내용은 아래 두줄이다
@@ -113,7 +115,7 @@ logging.level.jdbc.audit=OFF
 logging.level.jdbc.resultset=OFF
 logging.level.jdbc.connection=OFF
 ```
-OFF가 가득한 게 왠지 생략할 수 있을 것 같이 생겼다<br/.>
+OFF가 가득한 게 왠지 생략할 수 있을 것 같이 생겼다<br/>
 하지만 저 세 라인을 빼는 순간 엄청 빼곡한 로그가 밀려온다<br/>
 <img src="./assets/img_howToLogSql_logs.png" alt="audit, resultset log">
 아무래도 나노단위의 SQL 디버깅이 필요한 경우에만 활성화하는 게 좋겠다<br/><br/>
@@ -130,4 +132,4 @@ OFF가 가득한 게 왠지 생략할 수 있을 것 같이 생겼다<br/.>
 - **log4jdbc-log4j2**: SQL 쿼리와 결과를 테이블 형식으로 출력하고, 쿼리 실행 시간, 파라미터, 그리고 결과 테이블을 좀 더 가독성 있게 출력하는 데 유용합니다.
 ---
 SQL 로그만 필요하면 후자를, 전반적인 로그가 필요하면 전자를 적용하는 게 좋을 듯<br/>
-두 개를 같이 사용한다면 logback에서 sql로그를 최소화해 중복을 줄이는 것이 바람직하다
+두 개를 같이 사용한다면 logback에서 sql로그를 최소화해 중복을 줄이는 것이 바람직하겠다

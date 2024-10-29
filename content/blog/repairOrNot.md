@@ -1,5 +1,5 @@
 ---
-title: 액정 수리비가 116만원이라고요?
+title: 맥북 액정 수리비가 116만원이라고요?
 description: Macbook M1 Pro의 미친 수리비
 date: 2024-10-11
 tags: Blog
