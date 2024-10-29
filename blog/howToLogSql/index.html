@@ -582,25 +582,23 @@ footer i svg {width:1rem;}
 <h2 id="2-log4jdbc-log4j2">방법2: log4jdbc-log4j2</h2>
 <h3 id="log4jdbc-log4j2-sql">log4jdbc-log4j2로 콘솔에 가독성 좋은 테이블 형태로 SQL 실행 결과를 출력할 수 있게 해 본다</h3>
 <p>저는 Maven 빌드라 <strong>pom.xml에 log4jdbc-log4j2 의존성</strong>을 추가</p>
-<pre><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.bgee.log4jdbc-log4j2&lt;/groupId&gt;
-    &lt;artifactId&gt;log4jdbc-log4j2-jdbc4.1&lt;/artifactId&gt;
-    &lt;version&gt;1.16&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<pre class="language-js" tabindex="0"><code class="language-js"><span class="token operator">&lt;</span>dependency<span class="token operator">></span>
+    <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>bgee<span class="token punctuation">.</span>log4jdbc<span class="token operator">-</span>log4j2<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
+    <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>log4jdbc<span class="token operator">-</span>log4j2<span class="token operator">-</span>jdbc4<span class="token punctuation">.</span><span class="token number">1</span><span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
+    <span class="token operator">&lt;</span>version<span class="token operator">></span><span class="token number">1.16</span><span class="token operator">&lt;</span><span class="token operator">/</span>version<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span></code></pre>
 <p>그다음은 src/main/resources/<strong>application.properties</strong> 파일에 아래의 내용을 추가한다</p>
-<pre><code>spring.datasource.driver-class-name=net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-spring.datasource.url=jdbc:log4jdbc:mysql://localhost:3306/your_database
-spring.datasource.username=사용자명
-spring.datasource.password=사용자비번
+<pre class="language-js" tabindex="0"><code class="language-js">spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>driver<span class="token operator">-</span><span class="token keyword">class</span><span class="token operator">-</span>name<span class="token operator">=</span>net<span class="token punctuation">.</span>sf<span class="token punctuation">.</span>log4jdbc<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>jdbcapi<span class="token punctuation">.</span>DriverSpy
+spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>url<span class="token operator">=</span>jdbc<span class="token operator">:</span>log4jdbc<span class="token operator">:</span>mysql<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>localhost<span class="token operator">:</span><span class="token number">3306</span><span class="token operator">/</span>your_database
+spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>username<span class="token operator">=</span>사용자명
+spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>password<span class="token operator">=</span>사용자비번
 
-logging.level.jdbc.sqlonly=DEBUG
-logging.level.jdbc.sqltiming=INFO
-logging.level.jdbc.resultsettable=INFO
-logging.level.jdbc.audit=OFF
-logging.level.jdbc.resultset=OFF
-logging.level.jdbc.connection=OFF
-</code></pre>
+logging<span class="token punctuation">.</span>level<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>sqlonly<span class="token operator">=</span><span class="token constant">DEBUG</span>
+logging<span class="token punctuation">.</span>level<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>sqltiming<span class="token operator">=</span><span class="token constant">INFO</span>
+logging<span class="token punctuation">.</span>level<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>resultsettable<span class="token operator">=</span><span class="token constant">INFO</span>
+logging<span class="token punctuation">.</span>level<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>audit<span class="token operator">=</span><span class="token constant">OFF</span>
+logging<span class="token punctuation">.</span>level<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>resultset<span class="token operator">=</span><span class="token constant">OFF</span>
+logging<span class="token punctuation">.</span>level<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>connection<span class="token operator">=</span><span class="token constant">OFF</span></code></pre>
 <p>설정하면 이런 모습이다
 <picture><source type="image/avif" srcset="/blog/howToLogSql/92YDg15IwS-1280.avif 1280w"><source type="image/webp" srcset="/blog/howToLogSql/92YDg15IwS-1280.webp 1280w"><img loading="lazy" decoding="async" src="/blog/howToLogSql/92YDg15IwS-1280.png" alt="application.properties 내 log4jdbc 설정" width="1280" height="788"></picture></p>
 <p>url에 주목하시라
@@ -609,9 +607,8 @@ jdbc:mysql://localhost:3306/your_database 이었다면<br>
 jdbc:<strong>log4jdb:c</strong>mysql://localhost:3306/your_database<br>
 이렇게 **log4jdbc:**가 추가되면 된다 Mysql 외에 다른 DBMS도 거의 동일</p>
 <p>그리고 src/main/resources/<strong>log4jdbc.log4j2.properties</strong> 파일도 필요하다 내용은 아래 두줄이다</p>
-<pre><code>log4jdbc.spylogdelegator.name=net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator
-log4jdbc.dump.sql.maxlinelength=0
-</code></pre>
+<pre class="language-js" tabindex="0"><code class="language-js">log4jdbc<span class="token punctuation">.</span>spylogdelegator<span class="token punctuation">.</span>name<span class="token operator">=</span>net<span class="token punctuation">.</span>sf<span class="token punctuation">.</span>log4jdbc<span class="token punctuation">.</span>log<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span>Slf4jSpyLogDelegator
+log4jdbc<span class="token punctuation">.</span>dump<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>maxlinelength<span class="token operator">=</span><span class="token number">0</span></code></pre>
 <p>위 내용을 그냥 application.properties에 몰아넣었더니 이상하게 log4jdbc 설정 속성들이 안 먹어서 순순히 log4jdbc.log4j2.properties로 분리했다<br><br></p>
 <p>다시 application.properties로 돌아가서 log4jdbc 설정을 살펴보겠다<br>
 logging.level.jdbc.sqlonly=DEBUG
@@ -628,14 +625,13 @@ logging.level.jdbc.resultsettable=INFO</strong>
 나는 <strong>logging.level.jdbc.sqlonly=OFF (OFF로 명시적으로 비활성화해야 함)로 바꿨다</strong><br>
 이렇게 하면 sqltiming에서 쿼리문이 실행시간과 함께 한 번만 출력된다<br><br></p>
 <p>마찬가지로 OFF를 해두는 게 좋은 나머지 세 가지를 보면</p>
-<pre><code>logging.level.jdbc.audit=OFF
-logging.level.jdbc.resultset=OFF
-logging.level.jdbc.connection=OFF
-</code></pre>
+<pre class="language-js" tabindex="0"><code class="language-js">logging<span class="token punctuation">.</span>level<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>audit<span class="token operator">=</span><span class="token constant">OFF</span>
+logging<span class="token punctuation">.</span>level<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>resultset<span class="token operator">=</span><span class="token constant">OFF</span>
+logging<span class="token punctuation">.</span>level<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>connection<span class="token operator">=</span><span class="token constant">OFF</span></code></pre>
 <p>OFF가 가득한 게 왠지 생략할 수 있을 것 같이 생겼다<br>
-하지만 저 세 라인을 빼는 순간 엄청 빼곡한 로그가 밀려온다<br>
+하지만 저 세 라인을 빼는 순간 엄청 빼곡한 로그가 밀려온다<br></p>
 <picture><source type="image/avif" srcset="/blog/howToLogSql/4pr-8Ivzxf-1280.avif 1280w"><source type="image/webp" srcset="/blog/howToLogSql/4pr-8Ivzxf-1280.webp 1280w"><img loading="lazy" decoding="async" src="/blog/howToLogSql/4pr-8Ivzxf-1280.png" alt="audit, resultset log" width="1280" height="596"></picture>
-아무래도 나노단위의 SQL 디버깅이 필요한 경우에만 활성화하는 게 좋겠다<br><br></p>
+아무래도 나노단위의 SQL 디버깅이 필요한 경우에만 활성화하는 게 좋겠다<br><br>
 <p>최종적으로 이런 모습이다<br>
 <picture><source type="image/avif" srcset="/blog/howToLogSql/WnM8JT6H8E-1280.avif 1280w"><source type="image/webp" srcset="/blog/howToLogSql/WnM8JT6H8E-1280.webp 1280w"><img loading="lazy" decoding="async" src="/blog/howToLogSql/WnM8JT6H8E-1280.png" alt="sqltiming+result set table log" width="1280" height="1188"></picture></p>
 <p>일부 컬럼이 [unread]로 나오는 이유는 ResultSet이 실제로 읽히지 않은 컬럼을 [unread]로 표시하는 log4jdbc의 특성이라고 한다<br>
@@ -655,7 +651,7 @@ logging.level.jdbc.connection=OFF
 			</div>
 		</div>
 
-		<!-- This page `/blog/howToLogSql/` was built on 2024-10-29T09:03:45.081Z -->
+		<!-- This page `/blog/howToLogSql/` was built on 2024-10-29T12:03:44.262Z -->
 		
 	</body>
 </html>

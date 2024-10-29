@@ -50,25 +50,23 @@
 &lt;h2 id=&quot;2-log4jdbc-log4j2&quot;&gt;방법2: log4jdbc-log4j2&lt;/h2&gt;
 &lt;h3 id=&quot;log4jdbc-log4j2-sql&quot;&gt;log4jdbc-log4j2로 콘솔에 가독성 좋은 테이블 형태로 SQL 실행 결과를 출력할 수 있게 해 본다&lt;/h3&gt;
 &lt;p&gt;저는 Maven 빌드라 &lt;strong&gt;pom.xml에 log4jdbc-log4j2 의존성&lt;/strong&gt;을 추가&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;dependency&amp;gt;
-    &amp;lt;groupId&amp;gt;org.bgee.log4jdbc-log4j2&amp;lt;/groupId&amp;gt;
-    &amp;lt;artifactId&amp;gt;log4jdbc-log4j2-jdbc4.1&amp;lt;/artifactId&amp;gt;
-    &amp;lt;version&amp;gt;1.16&amp;lt;/version&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-js&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;dependency&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;groupId&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;org&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;bgee&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;log4jdbc&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;log4j2&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;groupId&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;artifactId&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;log4jdbc&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;log4j2&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;jdbc4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;artifactId&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;version&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1.16&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;version&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;dependency&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;그다음은 src/main/resources/&lt;strong&gt;application.properties&lt;/strong&gt; 파일에 아래의 내용을 추가한다&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;spring.datasource.driver-class-name=net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-spring.datasource.url=jdbc:log4jdbc:mysql://localhost:3306/your_database
-spring.datasource.username=사용자명
-spring.datasource.password=사용자비번
+&lt;pre class=&quot;language-js&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;spring&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;datasource&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;driver&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;name&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;net&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sf&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;log4jdbc&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sql&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;jdbcapi&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;DriverSpy
+spring&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;datasource&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;url&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;jdbc&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;log4jdbc&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;mysql&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;localhost&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;3306&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;your_database
+spring&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;datasource&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;username&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;사용자명
+spring&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;datasource&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;password&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;사용자비번
 
-logging.level.jdbc.sqlonly=DEBUG
-logging.level.jdbc.sqltiming=INFO
-logging.level.jdbc.resultsettable=INFO
-logging.level.jdbc.audit=OFF
-logging.level.jdbc.resultset=OFF
-logging.level.jdbc.connection=OFF
-&lt;/code&gt;&lt;/pre&gt;
+logging&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;level&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;jdbc&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sqlonly&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;DEBUG&lt;/span&gt;
+logging&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;level&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;jdbc&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sqltiming&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;INFO&lt;/span&gt;
+logging&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;level&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;jdbc&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;resultsettable&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;INFO&lt;/span&gt;
+logging&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;level&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;jdbc&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;audit&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;OFF&lt;/span&gt;
+logging&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;level&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;jdbc&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;resultset&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;OFF&lt;/span&gt;
+logging&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;level&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;jdbc&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;connection&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;OFF&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;설정하면 이런 모습이다
 &lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://selinakk.github.io/blog/howToLogSql/92YDg15IwS-1280.avif 1280w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://selinakk.github.io/blog/howToLogSql/92YDg15IwS-1280.webp 1280w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://selinakk.github.io/blog/howToLogSql/92YDg15IwS-1280.png&quot; alt=&quot;application.properties 내 log4jdbc 설정&quot; width=&quot;1280&quot; height=&quot;788&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
 &lt;p&gt;url에 주목하시라
@@ -77,9 +75,8 @@ jdbc:mysql://localhost:3306/your_database 이었다면&lt;br&gt;
 jdbc:&lt;strong&gt;log4jdb:c&lt;/strong&gt;mysql://localhost:3306/your_database&lt;br&gt;
 이렇게 **log4jdbc:**가 추가되면 된다 Mysql 외에 다른 DBMS도 거의 동일&lt;/p&gt;
 &lt;p&gt;그리고 src/main/resources/&lt;strong&gt;log4jdbc.log4j2.properties&lt;/strong&gt; 파일도 필요하다 내용은 아래 두줄이다&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;log4jdbc.spylogdelegator.name=net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator
-log4jdbc.dump.sql.maxlinelength=0
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-js&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;log4jdbc&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;spylogdelegator&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;name&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;net&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sf&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;log4jdbc&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;log&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;slf4j&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Slf4jSpyLogDelegator
+log4jdbc&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;dump&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sql&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;maxlinelength&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;위 내용을 그냥 application.properties에 몰아넣었더니 이상하게 log4jdbc 설정 속성들이 안 먹어서 순순히 log4jdbc.log4j2.properties로 분리했다&lt;br&gt;&lt;br&gt;&lt;/p&gt;
 &lt;p&gt;다시 application.properties로 돌아가서 log4jdbc 설정을 살펴보겠다&lt;br&gt;
 logging.level.jdbc.sqlonly=DEBUG
@@ -96,14 +93,13 @@ logging.level.jdbc.resultsettable=INFO&lt;/strong&gt;
 나는 &lt;strong&gt;logging.level.jdbc.sqlonly=OFF (OFF로 명시적으로 비활성화해야 함)로 바꿨다&lt;/strong&gt;&lt;br&gt;
 이렇게 하면 sqltiming에서 쿼리문이 실행시간과 함께 한 번만 출력된다&lt;br&gt;&lt;br&gt;&lt;/p&gt;
 &lt;p&gt;마찬가지로 OFF를 해두는 게 좋은 나머지 세 가지를 보면&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;logging.level.jdbc.audit=OFF
-logging.level.jdbc.resultset=OFF
-logging.level.jdbc.connection=OFF
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-js&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;logging&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;level&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;jdbc&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;audit&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;OFF&lt;/span&gt;
+logging&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;level&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;jdbc&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;resultset&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;OFF&lt;/span&gt;
+logging&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;level&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;jdbc&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;connection&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;OFF&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;OFF가 가득한 게 왠지 생략할 수 있을 것 같이 생겼다&lt;br&gt;
-하지만 저 세 라인을 빼는 순간 엄청 빼곡한 로그가 밀려온다&lt;br&gt;
+하지만 저 세 라인을 빼는 순간 엄청 빼곡한 로그가 밀려온다&lt;br&gt;&lt;/p&gt;
 &lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://selinakk.github.io/blog/howToLogSql/4pr-8Ivzxf-1280.avif 1280w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://selinakk.github.io/blog/howToLogSql/4pr-8Ivzxf-1280.webp 1280w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://selinakk.github.io/blog/howToLogSql/4pr-8Ivzxf-1280.png&quot; alt=&quot;audit, resultset log&quot; width=&quot;1280&quot; height=&quot;596&quot;&gt;&lt;/picture&gt;
-아무래도 나노단위의 SQL 디버깅이 필요한 경우에만 활성화하는 게 좋겠다&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+아무래도 나노단위의 SQL 디버깅이 필요한 경우에만 활성화하는 게 좋겠다&lt;br&gt;&lt;br&gt;
 &lt;p&gt;최종적으로 이런 모습이다&lt;br&gt;
 &lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://selinakk.github.io/blog/howToLogSql/WnM8JT6H8E-1280.avif 1280w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://selinakk.github.io/blog/howToLogSql/WnM8JT6H8E-1280.webp 1280w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://selinakk.github.io/blog/howToLogSql/WnM8JT6H8E-1280.png&quot; alt=&quot;sqltiming+result set table log&quot; width=&quot;1280&quot; height=&quot;1188&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
 &lt;p&gt;일부 컬럼이 [unread]로 나오는 이유는 ResultSet이 실제로 읽히지 않은 컬럼을 [unread]로 표시하는 log4jdbc의 특성이라고 한다&lt;br&gt;
