@@ -220,15 +220,11 @@ header {
 	border-bottom: 1px solid #1e1e1e;
 }
 .postlist-item:before {
+	content: "" counter(start-from, decimal-leading-zero) "";
 	position: relative;
-	top: -5.4px;
+	top: -7.5px;
 	display: inline-block;
 	padding-right:.7rem;
-	/* pointer-events: none; */
-	content: "" counter(start-from, decimal-leading-zero) "";
-	/* line-height: 100%; */
-	/* text-align: right; */
-	/* margin-left: -1.5rem; */
 }
 .postlist-date,
 .postlist-item:before {
@@ -278,6 +274,11 @@ header {
 .post-metadata time {
 	margin-right: 1em;
 }
+@media screen and (max-width:767px) {
+	.postlist-item:before {
+		top: -4.5px;
+	}
+}
 body{
     width: 100%;
     max-width: 87rem;
@@ -323,7 +324,7 @@ aside.aside > h2 {margin-bottom:.3rem;}
 }
 footer i svg {width:1rem;}
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
     header {justify-content: space-between;}
     aside.aside {display: none;}
 }</style>
@@ -390,7 +391,7 @@ footer i svg {width:1rem;}
 			</div>
 		</div>
 
-		<!-- This page `/tags/blog/` was built on 2024-10-29T12:03:44.310Z -->
+		<!-- This page `/tags/blog/` was built on 2024-11-02T05:21:00.090Z -->
 		
 	</body>
 </html>

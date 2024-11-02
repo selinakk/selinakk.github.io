@@ -209,15 +209,11 @@ header {
 	border-bottom: 1px solid #1e1e1e;
 }
 .postlist-item:before {
+	content: "" counter(start-from, decimal-leading-zero) "";
 	position: relative;
-	top: -5.4px;
+	top: -7.5px;
 	display: inline-block;
 	padding-right:.7rem;
-	/* pointer-events: none; */
-	content: "" counter(start-from, decimal-leading-zero) "";
-	/* line-height: 100%; */
-	/* text-align: right; */
-	/* margin-left: -1.5rem; */
 }
 .postlist-date,
 .postlist-item:before {
@@ -267,4 +263,8 @@ header {
 .post-metadata time {
 	margin-right: 1em;
 }
-
+@media screen and (max-width:767px) {
+	.postlist-item:before {
+		top: -4.5px;
+	}
+}

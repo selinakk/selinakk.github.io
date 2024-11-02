@@ -44,7 +44,7 @@ aside.aside > h2 {margin-bottom:.3rem;}
 }
 footer i svg {width:1rem;}
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
     header {justify-content: space-between;}
     aside.aside {display: none;}
 }

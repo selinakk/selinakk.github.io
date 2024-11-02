@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>맥북 액정 수리비가 116만원이라고요?</title>
-		<meta name="description" content="Macbook M1 Pro의 미친 수리비">
+		<title>정적인 웹과 동적인 웹의 차이 - static vs dynamic website</title>
+		<meta name="description" content="Static vs dynamic website">
 		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="selinakk.github.io">
 		
 		<style>/**
@@ -542,33 +542,47 @@ footer i svg {width:1rem;}
 		</aside>
 			<div id="skip" class="contents">
 					
-<h2 id="116">맥북 액정 수리비가 116만원이라고요?</h2>
+<h2 id="static-vs-dynamic-website">정적인 웹과 동적인 웹의 차이 - static vs dynamic website</h2>
 
 <ul class="post-metadata">
-	<li><a href="/tags/blog/" class="post-tag">Blog</a></li>
+	<li><a href="/tags/backend/" class="post-tag">Backend</a></li>
 </ul>
 
-<p>평소대로 노트북을 사용하던 중 갑자기 노트북 화면이 검어지더니 먹통이 됐다<br>
-수차례 강제종료 하고 다시 켜봐도 똑같다<br>
-부팅음은 나는데 화면이 까매.. 왜 안 켜져?<br><br></p>
-<p>애플에 고장 문의를 했는데 상담원이 알려준 대로 전원버튼을 길게 눌러 시동옵션을 시도해 봐도 안 먹힌다<br>
-최종 프로젝트 이제 코딩 들어가야 하는데 환장<br></p>
-<p>결국 수리 예약 후 공식 서비스센터인 ANTZ에 다녀왔다<br><br></p>
-<p>다녀오기만 했다<br>
-수리 견적 116만 7천 원이 나왔기 때문이다<br>
-엔지니어분이 부팅은 된다며 외부 디스플레이에 직접 꽂아서 보여주셨다 디스플레이가 문제라고 했다<br>
-더 큰 문제는 액정만 쏙 갈면 되는 게 아니라 디스플레이를 바꾸려면 윗판+힌지 이렇게 다 갈아야 한다는 것<br>
-최종 문제는 그 비용이 116만 원이 넘는다는 것<br>
-철 한참 지난 OTL을 쓰고 싶은 심정<br><br></p>
-<p>수리를 할지, 윈도우 노트북을 새로 살지 가성비를 따져보는 시간이 필요하다</p>
+<p>개발을 하다 보면 웹을 정의하는 두 가지 개념을 접하게 됩니다<br>
+바로 static과 dynamic입니다<br>
+두 개념은 웹 설계/배포과정에서 구분이 됩니다<br><br></p>
+<h2 id="static">static 웹이란?</h2>
+<p>정적 웹 페이지에 접근하는 모든 사용자는 동일한 컨텐츠를 보게 됩니다<br>
+정적 웹은 주로 HTML, CSS, Javascript를 사용하여 구축되며 서버 측 프로그램이나 애플리케이션이 실행되지 않습니다<br>
+정적인 웹에서는 <strong>사용자가 웹 페이지를 업데이트 할 수 없습니다</strong><br>
+콘텐츠가 자주 변경되지 않는 랜딩 페이지, 포트폴리오와 같은 간단한 웹사이트가 정적 웹페이지에 적합합니다<br>
+정적인 웹 호스팅을 지원하는 서비스로는 Github Pages, Vercel 등이 있습니다<br>
+지금 이 블로그가 정적인 웹사이트입니다 정적이라 웹에서 직접 글 수정이 불가합니다<br>
+정적 컨텐츠를 수정해서 레포지토리로 푸시를 하면 자동 배포를 통해 수정이 이루어집니다<br><br></p>
+<h2 id="dynamic">dynamic 웹이란?</h2>
+<p>사용자의 입력이나 시간 등에 따라 웹 페이지의 내용이 달라질 수 있습니다<br>
+사용자 입력에 따라 즉시 콘텐츠를 생성하고 업데이트된 정보를 제공합니다 = 즉, <strong>사용자가 웹의 상태를 바꿀 수 있습니다</strong><br>
+동적 웹페이지는 Ajax, JSP, ASP 등의 기술을 사용하여 구축됩니다 Spring에서 dynamic web project를 볼 수 있죠<br>
+동적인 웹은 일반적으로 정적인 웹보다 개발 및 호스팅 비용이 많이 들고 속도가 느릴 가능성이 있습니다<br></p>
+<picture><source type="image/avif" srcset="/blog/staticNdynamic/F9BhAPq172-666.avif 666w"><source type="image/webp" srcset="/blog/staticNdynamic/F9BhAPq172-666.webp 666w"><img loading="lazy" decoding="async" src="/blog/staticNdynamic/F9BhAPq172-666.png" alt="static vs dynamic web flow chart" width="666" height="442"></picture>
+출처 GeeksForGeeks
+<br><br>
+static 웹은 브라우저가 HTTP 요청을 보내면 웹 서버가 바로 HTML 파일을 전달합니다 따라서 HTTP REQUEST(요청)와 HTTP RESPONSE(응답)만 수행됩니다<br>
+서버가 단순히 요청된 파일을 반환하기 때문에 추가적인 프로그램 실행이 필요하지 않습니다<br>
+<br>
+반면 dynamic 웹 페이지는 요청이 들어오면, 웹 서버가 요청을 받아 애플리케이션 프로그램을 실행하여 HTML 출력을 생성합니다 따라서 1단계에서 4단계까지 모든 단계가 수행됩니다<br>
+HTTP 요청 → 애플리케이션 프로그램 호출 → 프로그램 실행 및 결과 생성 → HTTP 응답<br><br>
+<p>블로그로 다시 예를 들어보면<br>
+사용자가 블로그 상태를 실시간으로 변경할 수 없는 Github Pages는 정적인 웹이고,<br>
+사용자가 실시간으로 글을 관리하거나 댓글을 남길 수 있는 티스토리 블로그는 동적이라고 할 수 있습니다<br></p>
 
-<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/whySelina/">Selina?</a></li><li class="links-nextprev-next">Next →<br><a href="/blog/howToLogSql/">스프링부트에서 SQL 로그 출력하기 - logback, log4jdbc</a></li>
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/howToLogSql/">스프링부트에서 SQL 로그 출력하기 - logback, log4jdbc</a></li>
 </ul>
 
 			</div>
 		</div>
 
-		<!-- This page `/blog/repairOrNot/` was built on 2024-11-02T05:21:00.041Z -->
+		<!-- This page `/blog/staticNdynamic/` was built on 2024-11-02T05:21:00.041Z -->
 		
 	</body>
 </html>
