@@ -7,7 +7,7 @@
 		<meta name="description" content="꾸준히 공부하고 기록하며 성장합니다">
 		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="selinakk.github.io">
 		
-		<style>.postlist { counter-reset: start-from 3 }
+		<style>.postlist { counter-reset: start-from 4 }
 /* This is an arbitrary CSS string added to the bundle */
 @font-face {
 	font-family: 'Space Grotesk';
@@ -37,6 +37,8 @@
 
 	--background-color: #fff;
 
+	--border-color: #1e1e1e;
+
 	--text-color: var(--color-gray-90);
 	--text-color-link: #082840;
 	--text-color-link-active: #24ffc5;
@@ -51,10 +53,12 @@
 		--color-gray-50: #C0C0C0;
 		--color-gray-90: #dad8d8;
 
+		--border-color: #dad8d8;
+
 		/* --text-color is assigned to --color-gray-_ above */
 		--text-color-link: #24ffc5;
 		--text-color-link-active: #4663eb;
-		--text-color-link-visited: #24ffc5;
+		--text-color-link-visited: #dad8d8;
 
 		--background-color: #15202b;
 	}
@@ -217,7 +221,7 @@ header {
 	/* flex-wrap: wrap; */
 	align-items: baseline;
 	counter-increment: start-from -1;
-	border-bottom: 1px solid #1e1e1e;
+	border-bottom: 1px solid var(--border-color);
 }
 .postlist-item:before {
 	content: "" counter(start-from, decimal-leading-zero) "";
@@ -276,7 +280,7 @@ header {
 }
 @media screen and (max-width:767px) {
 	.postlist-item:before {
-		top: -4.5px;
+		top: -3.25px;
 	}
 }
 body{
@@ -382,6 +386,10 @@ footer i svg {width:1rem;}
 <ol reversed="" class="postlist">
 
 	<li class="postlist-item">
+		<a href="/blog/ciNcd/" class="postlist-link">CI/CD란? - Github Pages와 CI/CD</a>
+	</li>
+
+	<li class="postlist-item">
 		<a href="/blog/staticNdynamic/" class="postlist-link">정적인 웹과 동적인 웹의 차이 - static vs dynamic website</a>
 	</li>
 
@@ -395,7 +403,7 @@ footer i svg {width:1rem;}
 			</div>
 		</div>
 
-		<!-- This page `/tags/backend/` was built on 2024-11-02T05:21:00.040Z -->
+		<!-- This page `/tags/backend/` was built on 2024-11-03T12:24:52.339Z -->
 		
 	</body>
 </html>

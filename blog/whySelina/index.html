@@ -204,6 +204,8 @@ pre[class*="language-diff-"] {
 
 	--background-color: #fff;
 
+	--border-color: #1e1e1e;
+
 	--text-color: var(--color-gray-90);
 	--text-color-link: #082840;
 	--text-color-link-active: #24ffc5;
@@ -218,10 +220,12 @@ pre[class*="language-diff-"] {
 		--color-gray-50: #C0C0C0;
 		--color-gray-90: #dad8d8;
 
+		--border-color: #dad8d8;
+
 		/* --text-color is assigned to --color-gray-_ above */
 		--text-color-link: #24ffc5;
 		--text-color-link-active: #4663eb;
-		--text-color-link-visited: #24ffc5;
+		--text-color-link-visited: #dad8d8;
 
 		--background-color: #15202b;
 	}
@@ -384,7 +388,7 @@ header {
 	/* flex-wrap: wrap; */
 	align-items: baseline;
 	counter-increment: start-from -1;
-	border-bottom: 1px solid #1e1e1e;
+	border-bottom: 1px solid var(--border-color);
 }
 .postlist-item:before {
 	content: "" counter(start-from, decimal-leading-zero) "";
@@ -443,7 +447,7 @@ header {
 }
 @media screen and (max-width:767px) {
 	.postlist-item:before {
-		top: -4.5px;
+		top: -3.25px;
 	}
 }
 body{
@@ -552,7 +556,7 @@ footer i svg {width:1rem;}
 정정해 주기도 귀찮고 되묻는 경우도 많아서 현지 이름을 만들게 됐다<br>
 내 이름 ㅅ에 맞춰 S로 시작하는 영어 이름 몇 개를 추려서 투표를 받았는데 그 결과가 셀리나다<br>
 (Selena는 너무 저스틴 비버 구여자친구 이름 같아서 모음 하나를 바꿔 Selina로 함)<br><br></p>
-<p>여기는 한국이지만 적당한 익명성+애착이 있어 웹상에서 사용하고 있다<br></p>
+<p>여기는 한국이지만 닉네임으로서 적당한 익명성과 애착이 있어 웹상에서 사용하고 있다<br></p>
 <picture><source type="image/avif" srcset="/blog/whySelina/l-BZhcs5eu-454.avif 454w"><source type="image/webp" srcset="/blog/whySelina/l-BZhcs5eu-454.webp 454w"><img loading="lazy" decoding="async" src="/blog/whySelina/l-BZhcs5eu-454.png" alt="Miss Selina Kim" width="454" height="340"></picture>
 
 <ul class="links-nextprev"><li class="links-nextprev-next">Next →<br><a href="/blog/repairOrNot/">맥북 액정 수리비가 116만원이라고요?</a></li>
@@ -561,7 +565,7 @@ footer i svg {width:1rem;}
 			</div>
 		</div>
 
-		<!-- This page `/blog/whySelina/` was built on 2024-11-02T05:21:00.041Z -->
+		<!-- This page `/blog/whySelina/` was built on 2024-11-03T12:24:52.340Z -->
 		
 	</body>
 </html>

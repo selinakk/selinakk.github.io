@@ -3,11 +3,179 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>selinakk.github.io</title>
-		<meta name="description" content="꾸준히 공부하고 기록하며 성장합니다">
+		<title>CI/CD란? - Github Pages와 CI/CD</title>
+		<meta name="description" content="Continuous Integration, Continuous Deployment/Delivery">
 		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="selinakk.github.io">
 		
-		<style>/* This is an arbitrary CSS string added to the bundle */
+		<style>/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #8292a2;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+	--eleventy-code-padding: 1.25em;
+	padding-left: var(--eleventy-code-padding);
+	padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+	background-color: hsl(0, 51%, 37%);
+	color: inherit;
+}
+.token.inserted {
+	background-color: hsl(126, 31%, 39%);
+	color: inherit;
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+	width: var(--eleventy-code-padding);
+	background-color: rgba(0,0,0,.2);
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+	display: block;
+	margin-left: calc(-1 * var(--eleventy-code-padding));
+	margin-right: calc(-1 * var(--eleventy-code-padding));
+	text-decoration: none; /* override del, ins, mark defaults */
+	color: inherit; /* override del, ins, mark defaults */
+}
+/* This is an arbitrary CSS string added to the bundle */
 @font-face {
 	font-family: 'Space Grotesk';
 	font-style: normal;
@@ -378,26 +546,58 @@ footer i svg {width:1rem;}
 		</aside>
 			<div id="skip" class="contents">
 					
-<h2 id="categories">Categories</h2>
+<h2 id="ci-cd-github-pages-ci-cd">CI/CD란? - Github Pages와 CI/CD</h2>
 
-<ul class="catelist">
-
-	
+<ul class="post-metadata">
 	<li><a href="/tags/backend/" class="post-tag">Backend</a></li>
-
-	
-	<li><a href="/tags/blog/" class="post-tag">Blog</a></li>
-
-	
-	<li><a href="/tags/about-me/" class="post-tag">About me</a></li>
-
 </ul>
 
+<br>
+<p>최근 정적인 웹 배포를 통해 접한 개념 <strong>CI</strong>와 <strong>CD</strong>
+<br><br></p>
+<h2 id="ci-continuous-integration">CI (Continuous Integration, 지속적인 통합)</h2>
+<ul>
+<li>목적: 개발자가 작성한 코드를 자주 병합하고 자동으로 테스트하여 코드 품질을 유지하는 것<br></li>
+<li>과정: 코드를 자주 병합하고, 병합할 때마다 자동으로 테스트와 빌드가 실행됩니다. 이 과정에서 코드의 버그나 문제가 발생하지 않는지 확인하여 코드 품질을 높이는 것이 목표<br></li>
+<li>예: 코드가 Git에 푸시될 때, 자동으로 빌드와 테스트가 실행되는 과정</li>
+</ul>
+<h2 id="cd-continuous-deployment-delivery">CD (Continuous Deployment/Delivery, 지속적인 배포/전달)</h2>
+<ul>
+<li>목적: CI 과정을 통해 테스트와 빌드를 통과한 코드를 자동으로 배포하여 사용자가 바로 사용할 수 있도록 만드는 것<br></li>
+<li>과정: CI가 끝난 후 빌드가 통과되면 자동으로 배포 프로세스가 시작되어, 변경사항이 실시간으로 서버에 반영<br></li>
+</ul>
+<h2 id="continuous-deployment-vs-delivery">Continuous Deployment vs Delivery 차이점</h2>
+<ul>
+<li><strong>Continuous Delivery</strong>: 배포 준비가 완료된 상태로 자동화되지만, 실제 배포는 수동으로 실행할 수도 있음(배포 타이밍을 원하는대로) 즉, 수동 승인 단계가 있는 배포<br></li>
+<li><strong>Continuous Deployment</strong>: 모든 배포 과정이 완전히 자동화되어 코드 변경 후 바로 배포까지 이어짐<br></li>
+</ul>
+<p><br><br>
+11ty로 만든 이 Github Pages 블로그를 예로 들어볼게요<br><br>
+먼저 CI 과정(11ty 빌드)<br></p>
+<p>코드 작성 → 11ty 빌드 실행 → 마크다운 등의 파일을 변환 → <strong>빌드 결과물(HTML, CSS, JS 등) 생성</strong> <br>
+이 과정에서 빌드 성공/실패 여부 확인
+<picture><source type="image/avif" srcset="/blog/ciNcd/rLuWhuzcKc-540.avif 540w"><source type="image/webp" srcset="/blog/ciNcd/rLuWhuzcKc-540.webp 540w"><img loading="lazy" decoding="async" src="/blog/ciNcd/rLuWhuzcKc-540.png" alt="CI" width="540" height="163"></picture></p>
+<p>그 다음 CD 과정(Github Pages 배포)<br>
+<strong>빌드 결과물을 레포지토리에 푸시 → Github Actions 실행 → Github Pages에 자동 배포</strong>
+<picture><source type="image/avif" srcset="/blog/ciNcd/VvMIZZO0an-540.avif 540w"><source type="image/webp" srcset="/blog/ciNcd/VvMIZZO0an-540.webp 540w"><img loading="lazy" decoding="async" src="/blog/ciNcd/VvMIZZO0an-540.png" alt="Github Actions" width="540" height="176"></picture></p>
+<p>Github Pages는 Continuous Deployment 방식의 좋은 예시입니다<br>
+코드를 푸시하면 자동으로 배포까지 이어지기 때문입니다<br><br></p>
+<h2 id="github-pages-cd">Github Pages의 CD(지속적 배포) 특징</h2>
+<ul>
+<li>HTML, CSS, JavaScript 같은 정적 파일만 호스팅 가능</li>
+<li>데이터베이스나 서버 사이드 코드는 실행할 수 없음</li>
+<li>블로그, 포트폴리오, 문서 사이트에 최적화</li>
+<li>특정 브랜치(main 또는 gh-pages)에 코드를 올리면 자동으로 배포</li>
+<li>자동화된 빌드 프로세스</li>
+</ul>
+
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/staticNdynamic/">정적인 웹과 동적인 웹의 차이 - static vs dynamic website</a></li>
+</ul>
 
 			</div>
 		</div>
 
-		<!-- This page `/tags/` was built on 2024-11-03T12:24:52.338Z -->
+		<!-- This page `/blog/ciNcd/` was built on 2024-11-03T12:24:52.339Z -->
 		
 	</body>
 </html>

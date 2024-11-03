@@ -37,6 +37,8 @@
 
 	--background-color: #fff;
 
+	--border-color: #1e1e1e;
+
 	--text-color: var(--color-gray-90);
 	--text-color-link: #082840;
 	--text-color-link-active: #24ffc5;
@@ -51,10 +53,12 @@
 		--color-gray-50: #C0C0C0;
 		--color-gray-90: #dad8d8;
 
+		--border-color: #dad8d8;
+
 		/* --text-color is assigned to --color-gray-_ above */
 		--text-color-link: #24ffc5;
 		--text-color-link-active: #4663eb;
-		--text-color-link-visited: #24ffc5;
+		--text-color-link-visited: #dad8d8;
 
 		--background-color: #15202b;
 	}
@@ -217,7 +221,7 @@ header {
 	/* flex-wrap: wrap; */
 	align-items: baseline;
 	counter-increment: start-from -1;
-	border-bottom: 1px solid #1e1e1e;
+	border-bottom: 1px solid var(--border-color);
 }
 .postlist-item:before {
 	content: "" counter(start-from, decimal-leading-zero) "";
@@ -276,7 +280,7 @@ header {
 }
 @media screen and (max-width:767px) {
 	.postlist-item:before {
-		top: -4.5px;
+		top: -3.25px;
 	}
 }
 body{
@@ -391,7 +395,7 @@ footer i svg {width:1rem;}
 			</div>
 		</div>
 
-		<!-- This page `/tags/blog/` was built on 2024-11-02T05:21:00.090Z -->
+		<!-- This page `/tags/blog/` was built on 2024-11-03T12:24:52.397Z -->
 		
 	</body>
 </html>
