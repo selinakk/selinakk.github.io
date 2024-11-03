@@ -9,6 +9,6 @@ tags: About me
 내 이름 ㅅ에 맞춰 S로 시작하는 영어 이름 몇 개를 추려서 투표를 받았는데 그 결과가 셀리나다<br/>
 (Selena는 너무 저스틴 비버 구여자친구 이름 같아서 모음 하나를 바꿔 Selina로 함)<br/><br/>
 
-여기는 한국이지만 적당한 익명성+애착이 있어 웹상에서 사용하고 있다<br/>
+여기는 한국이지만 닉네임으로서 적당한 익명성과 애착이 있어 웹상에서 사용하고 있다<br/>
 
 <img src="./assets/img_whySelina_msskim.png" alt="Miss Selina Kim">
