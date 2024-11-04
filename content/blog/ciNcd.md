@@ -25,21 +25,24 @@ tags: Backend
 - **Continuous Deployment**: 모든 배포 과정이 완전히 자동화되어 코드 변경 후 바로 배포까지 이어짐<br/>
 
 <br/><br/>
+Github Pages는 CI/CD의 좋은 예시입니다<br/>
+코드를 푸시하면 자동으로 배포까지 이어지기 때문입니다<br/>
 11ty로 만든 이 Github Pages 블로그를 예로 들어볼게요<br/><br/>
-먼저 CI 과정(11ty 빌드)<br/>
 
-코드 작성 → 11ty 빌드 실행 → 마크다운 등의 파일을 변환 → **빌드 결과물(HTML, CSS, JS 등) 생성** <br/>
+먼저 CI 과정<br/>
+
+코드 작성 → 코드 푸시 → Github Actions가 11ty 빌드 실행 → **빌드 결과물(HTML, CSS, JS 등) 생성** 
+<br/>
 이 과정에서 빌드 성공/실패 여부 확인
-<img src="./assets/img_ciNcd_ci.png" alt="CI">
 
-그 다음 CD 과정(Github Pages 배포)<br/>
-**빌드 결과물을 레포지토리에 푸시 → Github Actions 실행 → Github Pages에 자동 배포**
-<img src="./assets/img_ciNcd_actions.png" alt="Github Actions">
+그 다음 CD 과정<br/>
+CI에서 생성괸 빌드 결과물을 **Github Pages에 자동 배포**
 
+<br/>
 
-Github Pages는 Continuous Deployment 방식의 좋은 예시입니다<br/>
-코드를 푸시하면 자동으로 배포까지 이어지기 때문입니다<br/><br/>
-
+<img src="./assets/img_ciNcd_actions.jpg" alt="Github Actions CI/CD">
+좌측은 CI의 빌드 과정 우측은 CI/CD 파이프라인 
+<br/>
 ## Github Pages의 CD(지속적 배포) 특징
 - HTML, CSS, JavaScript 같은 정적 파일만 호스팅 가능
 - 데이터베이스나 서버 사이드 코드는 실행할 수 없음
