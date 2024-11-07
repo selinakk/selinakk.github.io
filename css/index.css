@@ -21,35 +21,30 @@
 /* Theme colors */
 :root {
 	--color-gray-20: #e0e0e0;
-	--color-gray-50: #C0C0C0;
 	--color-gray-90: #333;
 
 	--background-color: #fff;
+	--nav-bg-color: #f2f2f2;
 
 	--border-color: #1e1e1e;
 
 	--text-color: var(--color-gray-90);
-	--text-color-link: #082840;
-	--text-color-link-active: #24ffc5;
-	--text-color-link-visited: #17050F;
+	--text-color-link-active: #7741f5;
 
 	--syntax-tab-size: 2;
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--color-gray-20: #e0e0e0;
-		--color-gray-50: #C0C0C0;
 		--color-gray-90: #dad8d8;
+
+		--background-color: #15202b;
+		--nav-bg-color: #414141;
 
 		--border-color: #dad8d8;
 
-		/* --text-color is assigned to --color-gray-_ above */
-		--text-color-link: #24ffc5;
-		--text-color-link-active: #4663eb;
-		--text-color-link-visited: #dad8d8;
-
-		--background-color: #15202b;
+		--text-color: #f2f2f2;
+		--text-color-link-active: #24ffc5;
 	}
 }
 
@@ -58,11 +53,9 @@
 * {
 	box-sizing: border-box;
 }
-
 @view-transition {
 	navigation: auto;
 }
-
 html,
 body {
 	padding: 0;
@@ -74,44 +67,25 @@ body {
 html {
 	overflow-y: scroll;
 }
-
-/* https://www.a11yproject.com/posts/how-to-hide-content/ */
-.visually-hidden {
-	clip: rect(0 0 0 0);
-	clip-path: inset(50%);
-	height: 1px;
-	overflow: hidden;
-	position: absolute;
-	white-space: nowrap;
-	width: 1px;
-}
-
 p:last-child {
 	margin-bottom: 0;
 }
 p {
 	line-height: 1.5;
 }
-
 li {
 	line-height: 1.5;
 }
-
 a[href] {
-	color: var(--text-color-link);
-}
-a[href]:visited {
-	color: var(--text-color-link-visited);
+	color: var(--text-color);
 }
 a[href]:hover,
 a[href]:active {
 	color: var(--text-color-link-active);
 }
-
 main :first-child {
 	margin-top: 0;
 }
-
 .links-nextprev {
 	display: flex;
 	justify-content: space-between;
@@ -126,7 +100,6 @@ main :first-child {
 .links-nextprev-next {
 	text-align: right;
 }
-
 table {
 	margin: 1em 0;
 }
@@ -134,7 +107,6 @@ table td,
 table th {
 	padding-right: 1em;
 }
-
 pre,
 code {
 	font-family: var(--font-family-monospace);
@@ -158,6 +130,7 @@ pre:not([class*="language-"]) {
 code {
 	word-break: break-all;
 }
+.pb20 {padding-bottom: 20px;}
 
 /* Header */
 header {
@@ -165,16 +138,16 @@ header {
 	gap: 1em .5em;
 	flex-wrap: wrap;
 	align-items: center;
+	justify-content: space-between;
 	padding: 1.5rem 1rem;
 }
-.home-link {
-	font-size: 1.5rem;
-	font-weight: 700;
-	margin-right: 2em;
+header > a {
+	display: inline-flex;
+	width: 24px;
+	height: 24px;
 }
-.home-link:link:not(:hover) {
-	text-decoration: none;
-}
+header > a > svg {fill: var(--text-color);}
+header > a:hover > svg {fill: var(--text-color-link-active);}
 
 /* Nav */
 .nav {
@@ -187,27 +160,22 @@ header {
 	display: inline-flex;
 	padding: .2rem .4rem;
 	margin-right: .2rem;
-	background-color: #f2f2f2;
+	background-color: var(--nav-bg-color);
 	font-size: .9em;
 }
 .nav-item a[href]:not(:hover) {
 	text-decoration: none;
 }
-/* .nav a[href][aria-current="page"] {
-	text-decoration: underline;
-} */
 
-/* Posts list */
+/* Post list */
 .postlist {
 	list-style: none;
 	padding: 0;
-	/* padding-left: 1.5rem; */
 }
 .postlist-item {
 	display: flex;
 	padding:10px 0;
 	margin:0;
-	/* flex-wrap: wrap; */
 	align-items: baseline;
 	counter-increment: start-from -1;
 	border-bottom: 1px solid var(--border-color);
@@ -221,7 +189,7 @@ header {
 }
 .postlist-date,
 .postlist-item:before {
-	font-size: 0.8125em; /* 13px /16 */
+	font-size: 0.8125em;
 	color: var(--color-gray-90);
 }
 .postlist-date {
@@ -230,13 +198,7 @@ header {
 .postlist-link {
 	font-size: 2em;
 	font-size: calc(20px + ((34 - 20) * (100vw - 390px) / (1728 - 390)));;
-	/* font-weight: 700; */
 	flex-basis: calc(100% - 1.5rem);
-	/* padding-left: .25em;
-	padding-right: .5em;
-	text-underline-position: from-font;
-	text-underline-offset: 0;
-	text-decoration-thickness: 1px; */
 	text-decoration: none;
 }
 .postlist-item-active .postlist-link {
@@ -249,7 +211,6 @@ header {
 	align-items: center;
 	justify-content: center;
 	text-transform: capitalize;
-	/* font-style: italic; */
 }
 .postlist-item > .post-tag {
 	align-self: center;

@@ -32,35 +32,30 @@
 /* Theme colors */
 :root {
 	--color-gray-20: #e0e0e0;
-	--color-gray-50: #C0C0C0;
 	--color-gray-90: #333;
 
 	--background-color: #fff;
+	--nav-bg-color: #f2f2f2;
 
 	--border-color: #1e1e1e;
 
 	--text-color: var(--color-gray-90);
-	--text-color-link: #082840;
-	--text-color-link-active: #24ffc5;
-	--text-color-link-visited: #17050F;
+	--text-color-link-active: #7741f5;
 
 	--syntax-tab-size: 2;
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--color-gray-20: #e0e0e0;
-		--color-gray-50: #C0C0C0;
 		--color-gray-90: #dad8d8;
+
+		--background-color: #15202b;
+		--nav-bg-color: #414141;
 
 		--border-color: #dad8d8;
 
-		/* --text-color is assigned to --color-gray-_ above */
-		--text-color-link: #24ffc5;
-		--text-color-link-active: #4663eb;
-		--text-color-link-visited: #dad8d8;
-
-		--background-color: #15202b;
+		--text-color: #f2f2f2;
+		--text-color-link-active: #24ffc5;
 	}
 }
 
@@ -69,11 +64,9 @@
 * {
 	box-sizing: border-box;
 }
-
 @view-transition {
 	navigation: auto;
 }
-
 html,
 body {
 	padding: 0;
@@ -85,44 +78,25 @@ body {
 html {
 	overflow-y: scroll;
 }
-
-/* https://www.a11yproject.com/posts/how-to-hide-content/ */
-.visually-hidden {
-	clip: rect(0 0 0 0);
-	clip-path: inset(50%);
-	height: 1px;
-	overflow: hidden;
-	position: absolute;
-	white-space: nowrap;
-	width: 1px;
-}
-
 p:last-child {
 	margin-bottom: 0;
 }
 p {
 	line-height: 1.5;
 }
-
 li {
 	line-height: 1.5;
 }
-
 a[href] {
-	color: var(--text-color-link);
-}
-a[href]:visited {
-	color: var(--text-color-link-visited);
+	color: var(--text-color);
 }
 a[href]:hover,
 a[href]:active {
 	color: var(--text-color-link-active);
 }
-
 main :first-child {
 	margin-top: 0;
 }
-
 .links-nextprev {
 	display: flex;
 	justify-content: space-between;
@@ -137,7 +111,6 @@ main :first-child {
 .links-nextprev-next {
 	text-align: right;
 }
-
 table {
 	margin: 1em 0;
 }
@@ -145,7 +118,6 @@ table td,
 table th {
 	padding-right: 1em;
 }
-
 pre,
 code {
 	font-family: var(--font-family-monospace);
@@ -169,6 +141,7 @@ pre:not([class*="language-"]) {
 code {
 	word-break: break-all;
 }
+.pb20 {padding-bottom: 20px;}
 
 /* Header */
 header {
@@ -176,16 +149,16 @@ header {
 	gap: 1em .5em;
 	flex-wrap: wrap;
 	align-items: center;
+	justify-content: space-between;
 	padding: 1.5rem 1rem;
 }
-.home-link {
-	font-size: 1.5rem;
-	font-weight: 700;
-	margin-right: 2em;
+header > a {
+	display: inline-flex;
+	width: 24px;
+	height: 24px;
 }
-.home-link:link:not(:hover) {
-	text-decoration: none;
-}
+header > a > svg {fill: var(--text-color);}
+header > a:hover > svg {fill: var(--text-color-link-active);}
 
 /* Nav */
 .nav {
@@ -198,27 +171,22 @@ header {
 	display: inline-flex;
 	padding: .2rem .4rem;
 	margin-right: .2rem;
-	background-color: #f2f2f2;
+	background-color: var(--nav-bg-color);
 	font-size: .9em;
 }
 .nav-item a[href]:not(:hover) {
 	text-decoration: none;
 }
-/* .nav a[href][aria-current="page"] {
-	text-decoration: underline;
-} */
 
-/* Posts list */
+/* Post list */
 .postlist {
 	list-style: none;
 	padding: 0;
-	/* padding-left: 1.5rem; */
 }
 .postlist-item {
 	display: flex;
 	padding:10px 0;
 	margin:0;
-	/* flex-wrap: wrap; */
 	align-items: baseline;
 	counter-increment: start-from -1;
 	border-bottom: 1px solid var(--border-color);
@@ -232,7 +200,7 @@ header {
 }
 .postlist-date,
 .postlist-item:before {
-	font-size: 0.8125em; /* 13px /16 */
+	font-size: 0.8125em;
 	color: var(--color-gray-90);
 }
 .postlist-date {
@@ -241,13 +209,7 @@ header {
 .postlist-link {
 	font-size: 2em;
 	font-size: calc(20px + ((34 - 20) * (100vw - 390px) / (1728 - 390)));;
-	/* font-weight: 700; */
 	flex-basis: calc(100% - 1.5rem);
-	/* padding-left: .25em;
-	padding-right: .5em;
-	text-underline-position: from-font;
-	text-underline-offset: 0;
-	text-decoration-thickness: 1px; */
 	text-decoration: none;
 }
 .postlist-item-active .postlist-link {
@@ -260,7 +222,6 @@ header {
 	align-items: center;
 	justify-content: center;
 	text-transform: capitalize;
-	/* font-style: italic; */
 }
 .postlist-item > .post-tag {
 	align-self: center;
@@ -335,18 +296,17 @@ footer i svg {width:1rem;}
 
 	</head>
 	<body>
-		<a href="#skip" class="visually-hidden">Skip to main content</a>
-
 		<header>
 			<nav>
-				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
 				<ul class="nav">
 					<li class="nav-item"><a href="/">HOME</a></li>
 					<li class="nav-item"><a href="/blog/">POSTS</a></li>
-				<li class="nav-item"><a href="//github.com/selinakk" target="_blank">GITHUB</a></li>
-				<li class="nav-item"><a href="/feed/feed.xml">RSS</a></li>
+					<li class="nav-item"><a href="/feed/feed.xml">RSS</a></li>
 				</ul>
 			</nav>
+			<a href="//github.com/selinakk" target="_blank" title="Github(@selinakk) 새창열기">
+				<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+			</a>
 		</header>
 		<div class="container">
 		<aside class="aside">
@@ -399,7 +359,7 @@ footer i svg {width:1rem;}
 			</div>
 		</div>
 
-		<!-- This page `/tags/about-me/` was built on 2024-11-07T04:05:40.683Z -->
+		<!-- This page `/tags/about-me/` was built on 2024-11-07T07:37:47.832Z -->
 		
 	</body>
 </html>
