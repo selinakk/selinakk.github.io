@@ -23,8 +23,6 @@ aside.aside > h2 {margin-bottom:.3rem;}
 .contents{
     width:100%;
     max-width: 70rem;
-    /* height: 90vh;
-    min-height: 90vh; */
     padding: 1rem;
     overflow-y: auto;
 }
@@ -42,6 +40,8 @@ aside.aside > h2 {margin-bottom:.3rem;}
     vertical-align: middle;
     opacity: .7;
 }
+.img-sm {max-width:23rem;}
+.center {margin: 0 auto;}
 footer i svg {width:1rem;}
 
 @media screen and (max-width: 767px) {

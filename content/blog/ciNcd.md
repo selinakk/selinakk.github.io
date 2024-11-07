@@ -41,8 +41,9 @@ CI에서 생성괸 빌드 결과물을 **Github Pages에 자동 배포**
 <br/>
 
 <img src="./assets/img_ciNcd_actions.jpg" alt="Github Actions CI/CD">
-좌측은 CI의 빌드 과정 우측은 CI/CD 파이프라인 
+좌측은 CI의 빌드 과정, 우측은 CI/CD 파이프라인
 <br/>
+
 ## Github Pages의 CD(지속적 배포) 특징
 - HTML, CSS, JavaScript 같은 정적 파일만 호스팅 가능
 - 데이터베이스나 서버 사이드 코드는 실행할 수 없음
