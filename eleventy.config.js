@@ -63,8 +63,8 @@ export default async function(eleventyConfig) {
 		},
 		metadata: {
 			language: "ko",
-			title: "selinakk.github.io",
-			subtitle: "selinakk's Github Pages",
+			title: "Selinakk's log",
+			subtitle: "I learn. I code.",
 			base: "https://selinakk.github.io/",
 			author: {
 				name: "selinakk"
