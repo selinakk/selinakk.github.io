@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Selina?</title>
-		<meta name="description" content="내가 Selina가 된 이유">
+		<title>Java 데이터베이스 연동 기술 JPA vs MyBatis 이해하기</title>
+		<meta name="description" content="자바 데이터베이스를 연동하는 ORM(JPA+Hibernate) 방식과 SQL 매퍼 방식(MyBatis) 개념">
 		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Selinakk&#39;s">
 		
 		<style>/**
@@ -506,26 +506,81 @@ footer i svg {width:1rem;}
 		</aside>
 			<div id="skip" class="contents">
 					
-<h2 id="selina">Selina?</h2>
+<h2 id="java-jpa-vs-mybatis">Java 데이터베이스 연동 기술 JPA vs MyBatis 이해하기</h2>
 
 <ul class="post-metadata">
-	<li><a href="/tags/about-me/" class="post-tag">About me</a></li>
+	<li><a href="/tags/backend/" class="post-tag">Backend</a></li>
 </ul>
 
-<p>외국에 잠깐 살았을 때 영어 이름을 본명 끝 글자로 했더니 외국인들이 발음을 어려워했다<br>
-정정해 주기도 귀찮고 되묻는 경우도 많아서 현지 이름을 만들게 됐다<br>
-내 이름 ㅅ에 맞춰 S로 시작하는 영어 이름 몇 개를 추려서 투표를 받았는데 그 결과가 셀리나다<br>
-(Selena는 너무 저스틴 비버 구여자친구 이름 같아서 모음 하나를 바꿔 Selina로 함)<br><br></p>
-<p>여기는 한국이지만 닉네임으로서 적당한 익명성과 애착이 있어 웹상에서 사용하고 있다<br></p>
-<picture><source type="image/avif" srcset="/blog/whySelina/l-BZhcs5eu-454.avif 454w"><source type="image/webp" srcset="/blog/whySelina/l-BZhcs5eu-454.webp 454w"><img loading="lazy" decoding="async" src="/blog/whySelina/l-BZhcs5eu-454.png" alt="Miss Selina Kim" width="454" height="340"></picture>
+<br>
+<p>Java 데이터베이스 연동 기술들에 대해 알아봅시다<br>
+기본 개념인 JDBC(Java Database Connectivity)부터 살펴봅니다<br><br></p>
+<h2 id="1-jdbc">1. JDBC</h2>
+<p><strong>자바에서 데이터베이스와 통신하기 위한 기본 API</strong><br>
+SQL 쿼리를 직접 작성하고, 연결/실행/결과 처리를 직접 구현해야 함<br>
+<br></p>
+<h2 id="2-orm-jpa-hibernate">2. ORM 방식: JPA + Hibernate</h2>
+<p><strong>JPA</strong>는 자바의 ORM <strong>(Object Relational Mapping) 표준</strong>이며, <strong>Hibernate</strong>는 그 표준을 구현한 <strong>ORM 프레임워크</strong>
+<br></p>
+<h3 id="2-1-jpa-java-persistence-api">2-1. JPA(Java Persistence API)</h3>
+<p>Java의 표준 ORM API로 자바 객체와 데이터베이스 간의 상호작용을 관리하는 표준을 정의합니다<br>
+<strong>JPA 자체는 인터페이스와 표준 스펙만 제공</strong>하므로 실제 구현체(Hibernate, EclipseLink 등)가 필요합니다<br>
+JPA는 SQL을 직접 작성하지 않고, Entity(엔티티)라는 자바 객체를 통해 데이터베이스를 다룹니다 =&gt; 필요한 <strong>쿼리를 자동으로 생성하고 실행</strong>합니다<br>
+유지보수가 용이하고 코드가 간결해지는 장점이 있습니다<br>
+하지만 복잡한 쿼리 사용이 어렵고 활용 난이도가 있어 진입장벽이 높습니다
+<br><br></p>
+<p><em>🙋🏻‍♀️ 잠깐</em>
+<br>
+<strong>Object Relational Mapping</strong>이 뭔데?<br>
+객체 지향 언어인 <strong>자바의 객체와 관계형 데이터베이스의 테이블을 자동으로 매핑</strong>하는 기술입니다<br>
+JPA에서는 데이터베이스의 테이블을 Entity 클래스라는 자바 클래스로 표현하고, 이 클래스는 데이터베이스 테이블과 일대일로 매핑됩니다<br><br></p>
+<p><em>🙋🏻‍♀️ 잠깐</em>
+<br>
+<strong>Persistence</strong>란?<br>
+영속성입니다. <strong>데이터를 데이터베이스에 영구적으로 저장하고 관리하는 개념</strong>입니다<br>
+자바 객체와 데이터베이스 간의 동기화를 관리하는 역할을 합니다<br>
+JPA든 MyBatis든 모두 데이터를 영속화 하기 위한 기술인 셈입니다 접근 방식이 다른 거죠<br><br></p>
+<h3 id="2-2-hibernate">2-2. Hibernate</h3>
+<p><strong>Hibernate는 JPA의 실제 구현체</strong>입니다. JPA에서 정의한 표준을 따르며 추가적인 기능을 제공하는 <strong>ORM 프레임워크</strong>입니다<br>
+Hibernate의 독자적인 기능도 제공하기 때문에 유연성과 확장성이 있습니다<br></p>
+<h3 id="2-3-spring-data-jpa">2-3. Spring Data JPA</h3>
+<p>Spiring Data JPA는 JPA와 Hibernate를 더욱 간편하고 효율적으로 사용할 수 있게 돕는 Spring의 라이브러리입니다<br>
+<strong>JPA + Hibernate는 기본적인 ORM 기능만 제공하는 반면 Spring Data JPA는 자동 구현 기능을 제공</strong>합니다<br>
+Spring Data JPA의 Repository 인터페이스를 통해 데이터를 쉽게 관리할 수 있게 합니다<br>
+@Query 어노테이션을 사용하여 커스텀 쿼리를 사용할 수 있습니다<br><br></p>
+<h2 id="3-sql-mapper-mybatis">3. SQL Mapper 방식: MyBatis</h2>
+<p>마이바티스는 JDBC 기반의 <strong>SQL 매퍼 프레임워크</strong>입니다<br>
+JDBC를 쉽고 간편하게 사용하기 위한 상위 레이어의 프레임워크로, <strong>코드와 SQL의 분리 및 자동 매핑 기능을 제공</strong>합니다<br>
+SQL을 XML파일로 분리해 쿼리를 깔끔하게 분리할 수 있습니다<br>
+SQL을 제어하기 쉽고 복잡한 쿼리에도 유리하지만, SQL을 직접 작성해야 하므로 JPA보다 코드가 길어질 수 있습니다<br>
+또한 수동으로 SQL을 작성해야 하기 때문에 불필요한 반복 작업이 필요할 수 있습니다<br><br></p>
+<p><em>🙋🏻‍♀️ 잠깐</em>
+<br>
+<strong>SQL 매핑이 뭔데?</strong><br>
+SQL 쿼리와 자바 객체의 명시적으로 연결하는 작업(mapping)입니다
+<br><br></p>
+<p><em>🙋🏻‍♀️ 잠깐</em>
+<br>
+<strong>복잡한 쿼리 기준이 뭔데!</strong><br></p>
+<ul>
+<li>여러 테이블 조인</li>
+<li>서브 쿼리(쿼리 안에 또 다른 쿼리)</li>
+<li>대량 데이터 처리</li>
+<li>WHERE절에서 다양한 조건</li>
+</ul>
+<br>
+만약 혼용을 하게 된다면 간단한 CRUD 작업은 JPA를 사용하고, 복잡한 쿼리 필요시에만 MyBatis를 사용하는 게 좋습니다<br><br>
+<h2 id="4-nosql">4. 기타 방식: NoSQL 등</h2>
+<p>NoSQL (MongoDB, Cassandra 등)은 관계형 데이터베이스 대신 사용할 수 있는 데이터베이스 시스템입니다<br>
+관계형 DB의 제약에서 벗어난 방식으로 데이터를 처리할 수 있습니다</p>
 
-<ul class="links-nextprev"><li class="links-nextprev-next">Next →<br><a href="/blog/repairOrNot/">맥북 액정 수리비가 116만원이라고요?</a></li>
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/iCode/">코딩합니다</a></li>
 </ul>
 
 			</div>
 		</div>
 
-		<!-- This page `/blog/whySelina/` was built on 2024-11-10T12:16:55.337Z -->
+		<!-- This page `/blog/jpaNmybatis/` was built on 2024-11-10T12:16:55.336Z -->
 		
 	</body>
 </html>

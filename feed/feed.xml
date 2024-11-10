@@ -5,11 +5,79 @@
   <subtitle>I learn. I code.</subtitle>
   <link href="https://selinakk.github.io/feed/feed.xml" rel="self" />
   <link href="https://selinakk.github.io/" />
-  <updated>2024-11-07T00:00:00Z</updated>
+  <updated>2024-11-10T00:00:00Z</updated>
   <id>https://selinakk.github.io/</id>
   <author>
     <name>selinakk</name>
   </author>
+  <entry>
+    <title>Java 데이터베이스 연동 기술 JPA vs MyBatis 이해하기</title>
+    <link href="https://selinakk.github.io/blog/jpaNmybatis/" />
+    <updated>2024-11-10T00:00:00Z</updated>
+    <id>https://selinakk.github.io/blog/jpaNmybatis/</id>
+    <content type="html">&lt;br&gt;
+&lt;p&gt;Java 데이터베이스 연동 기술들에 대해 알아봅시다&lt;br&gt;
+기본 개념인 JDBC(Java Database Connectivity)부터 살펴봅니다&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h2 id=&quot;1-jdbc&quot;&gt;1. JDBC&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;자바에서 데이터베이스와 통신하기 위한 기본 API&lt;/strong&gt;&lt;br&gt;
+SQL 쿼리를 직접 작성하고, 연결/실행/결과 처리를 직접 구현해야 함&lt;br&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;h2 id=&quot;2-orm-jpa-hibernate&quot;&gt;2. ORM 방식: JPA + Hibernate&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;JPA&lt;/strong&gt;는 자바의 ORM &lt;strong&gt;(Object Relational Mapping) 표준&lt;/strong&gt;이며, &lt;strong&gt;Hibernate&lt;/strong&gt;는 그 표준을 구현한 &lt;strong&gt;ORM 프레임워크&lt;/strong&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;h3 id=&quot;2-1-jpa-java-persistence-api&quot;&gt;2-1. JPA(Java Persistence API)&lt;/h3&gt;
+&lt;p&gt;Java의 표준 ORM API로 자바 객체와 데이터베이스 간의 상호작용을 관리하는 표준을 정의합니다&lt;br&gt;
+&lt;strong&gt;JPA 자체는 인터페이스와 표준 스펙만 제공&lt;/strong&gt;하므로 실제 구현체(Hibernate, EclipseLink 등)가 필요합니다&lt;br&gt;
+JPA는 SQL을 직접 작성하지 않고, Entity(엔티티)라는 자바 객체를 통해 데이터베이스를 다룹니다 =&amp;gt; 필요한 &lt;strong&gt;쿼리를 자동으로 생성하고 실행&lt;/strong&gt;합니다&lt;br&gt;
+유지보수가 용이하고 코드가 간결해지는 장점이 있습니다&lt;br&gt;
+하지만 복잡한 쿼리 사용이 어렵고 활용 난이도가 있어 진입장벽이 높습니다
+&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;🙋🏻‍♀️ 잠깐&lt;/em&gt;
+&lt;br&gt;
+&lt;strong&gt;Object Relational Mapping&lt;/strong&gt;이 뭔데?&lt;br&gt;
+객체 지향 언어인 &lt;strong&gt;자바의 객체와 관계형 데이터베이스의 테이블을 자동으로 매핑&lt;/strong&gt;하는 기술입니다&lt;br&gt;
+JPA에서는 데이터베이스의 테이블을 Entity 클래스라는 자바 클래스로 표현하고, 이 클래스는 데이터베이스 테이블과 일대일로 매핑됩니다&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;🙋🏻‍♀️ 잠깐&lt;/em&gt;
+&lt;br&gt;
+&lt;strong&gt;Persistence&lt;/strong&gt;란?&lt;br&gt;
+영속성입니다. &lt;strong&gt;데이터를 데이터베이스에 영구적으로 저장하고 관리하는 개념&lt;/strong&gt;입니다&lt;br&gt;
+자바 객체와 데이터베이스 간의 동기화를 관리하는 역할을 합니다&lt;br&gt;
+JPA든 MyBatis든 모두 데이터를 영속화 하기 위한 기술인 셈입니다 접근 방식이 다른 거죠&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h3 id=&quot;2-2-hibernate&quot;&gt;2-2. Hibernate&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Hibernate는 JPA의 실제 구현체&lt;/strong&gt;입니다. JPA에서 정의한 표준을 따르며 추가적인 기능을 제공하는 &lt;strong&gt;ORM 프레임워크&lt;/strong&gt;입니다&lt;br&gt;
+Hibernate의 독자적인 기능도 제공하기 때문에 유연성과 확장성이 있습니다&lt;br&gt;&lt;/p&gt;
+&lt;h3 id=&quot;2-3-spring-data-jpa&quot;&gt;2-3. Spring Data JPA&lt;/h3&gt;
+&lt;p&gt;Spiring Data JPA는 JPA와 Hibernate를 더욱 간편하고 효율적으로 사용할 수 있게 돕는 Spring의 라이브러리입니다&lt;br&gt;
+&lt;strong&gt;JPA + Hibernate는 기본적인 ORM 기능만 제공하는 반면 Spring Data JPA는 자동 구현 기능을 제공&lt;/strong&gt;합니다&lt;br&gt;
+Spring Data JPA의 Repository 인터페이스를 통해 데이터를 쉽게 관리할 수 있게 합니다&lt;br&gt;
+@Query 어노테이션을 사용하여 커스텀 쿼리를 사용할 수 있습니다&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h2 id=&quot;3-sql-mapper-mybatis&quot;&gt;3. SQL Mapper 방식: MyBatis&lt;/h2&gt;
+&lt;p&gt;마이바티스는 JDBC 기반의 &lt;strong&gt;SQL 매퍼 프레임워크&lt;/strong&gt;입니다&lt;br&gt;
+JDBC를 쉽고 간편하게 사용하기 위한 상위 레이어의 프레임워크로, &lt;strong&gt;코드와 SQL의 분리 및 자동 매핑 기능을 제공&lt;/strong&gt;합니다&lt;br&gt;
+SQL을 XML파일로 분리해 쿼리를 깔끔하게 분리할 수 있습니다&lt;br&gt;
+SQL을 제어하기 쉽고 복잡한 쿼리에도 유리하지만, SQL을 직접 작성해야 하므로 JPA보다 코드가 길어질 수 있습니다&lt;br&gt;
+또한 수동으로 SQL을 작성해야 하기 때문에 불필요한 반복 작업이 필요할 수 있습니다&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;🙋🏻‍♀️ 잠깐&lt;/em&gt;
+&lt;br&gt;
+&lt;strong&gt;SQL 매핑이 뭔데?&lt;/strong&gt;&lt;br&gt;
+SQL 쿼리와 자바 객체의 명시적으로 연결하는 작업(mapping)입니다
+&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;🙋🏻‍♀️ 잠깐&lt;/em&gt;
+&lt;br&gt;
+&lt;strong&gt;복잡한 쿼리 기준이 뭔데!&lt;/strong&gt;&lt;br&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;여러 테이블 조인&lt;/li&gt;
+&lt;li&gt;서브 쿼리(쿼리 안에 또 다른 쿼리)&lt;/li&gt;
+&lt;li&gt;대량 데이터 처리&lt;/li&gt;
+&lt;li&gt;WHERE절에서 다양한 조건&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br&gt;
+만약 혼용을 하게 된다면 간단한 CRUD 작업은 JPA를 사용하고, 복잡한 쿼리 필요시에만 MyBatis를 사용하는 게 좋습니다&lt;br&gt;&lt;br&gt;
+&lt;h2 id=&quot;4-nosql&quot;&gt;4. 기타 방식: NoSQL 등&lt;/h2&gt;
+&lt;p&gt;NoSQL (MongoDB, Cassandra 등)은 관계형 데이터베이스 대신 사용할 수 있는 데이터베이스 시스템입니다&lt;br&gt;
+관계형 DB의 제약에서 벗어난 방식으로 데이터를 처리할 수 있습니다&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>코딩합니다</title>
     <link href="https://selinakk.github.io/blog/iCode/" />
