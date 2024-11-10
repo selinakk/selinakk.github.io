@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="pretty-atom-feed.xsl" type="text/xsl"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko">
-  <title>selinakk.github.io</title>
-  <subtitle>selinakk&#39;s Github Pages</subtitle>
+  <title>Selinakk&#39;s log</title>
+  <subtitle>I learn. I code.</subtitle>
   <link href="https://selinakk.github.io/feed/feed.xml" rel="self" />
   <link href="https://selinakk.github.io/" />
   <updated>2024-11-07T00:00:00Z</updated>
