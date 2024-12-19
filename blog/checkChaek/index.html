@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>정적인 웹과 동적인 웹의 차이 - static vs dynamic website</title>
-		<meta name="description" content="Static vs dynamic website">
+		<title>독서가를 위한 웹 서비스 CheckChaek 개발기</title>
+		<meta name="description" content="개인 첫 풀스택 개발 프로젝트 쳌책 후기">
 		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Selinakk&#39;s">
 		
 		<style>/**
@@ -507,47 +507,81 @@ footer i svg {width:1rem;}
 		</aside>
 			<div id="skip" class="contents">
 					
-<h2 id="static-vs-dynamic-website">정적인 웹과 동적인 웹의 차이 - static vs dynamic website</h2>
+<h2 id="checkchaek">독서가를 위한 웹 서비스 CheckChaek 개발기</h2>
 
 <ul class="post-metadata">
-	<li><a href="/tags/backend/" class="post-tag">Backend</a></li>
+	<li><a href="/tags/blog/" class="post-tag">Blog</a></li>
 </ul>
 
-<p>개발을 하다 보면 웹을 정의하는 두 가지 개념을 접하게 됩니다<br>
-바로 static과 dynamic입니다<br>
-두 개념은 웹 설계/배포과정에서 구분이 됩니다<br><br></p>
-<h2 id="static">static 웹이란?</h2>
-<p>정적 웹 페이지에 접근하는 모든 사용자는 동일한 컨텐츠를 보게 됩니다<br>
-정적 웹은 주로 HTML, CSS, Javascript를 사용하여 구축되며 서버 측 프로그램이나 애플리케이션이 실행되지 않습니다<br>
-정적인 웹에서는 <strong>사용자가 웹 페이지를 업데이트 할 수 없습니다</strong><br>
-콘텐츠가 자주 변경되지 않는 랜딩 페이지, 포트폴리오와 같은 간단한 웹사이트가 정적 웹페이지에 적합합니다<br>
-정적인 웹 호스팅을 지원하는 서비스로는 Github Pages, Vercel 등이 있습니다<br>
-지금 이 블로그가 정적인 웹사이트입니다 정적이라 웹에서 직접 글 수정이 불가합니다<br>
-정적 컨텐츠를 수정해서 레포지토리로 푸시를 하면 자동 배포를 통해 수정이 이루어집니다<br><br></p>
-<h2 id="dynamic">dynamic 웹이란?</h2>
-<p>사용자의 입력이나 시간 등에 따라 웹 페이지의 내용이 달라질 수 있습니다<br>
-사용자 입력에 따라 즉시 콘텐츠를 생성하고 업데이트된 정보를 제공합니다 = 즉, <strong>사용자가 웹의 상태를 바꿀 수 있습니다</strong><br>
-동적 웹페이지는 Ajax, JSP, ASP 등의 기술을 사용하여 구축됩니다 Spring에서 dynamic web project를 볼 수 있죠<br>
-동적인 웹은 일반적으로 정적인 웹보다 개발 및 호스팅 비용이 많이 들고 속도가 느릴 가능성이 있습니다<br></p>
-<picture><source type="image/avif" srcset="/blog/staticNdynamic/F9BhAPq172-666.avif 666w"><source type="image/webp" srcset="/blog/staticNdynamic/F9BhAPq172-666.webp 666w"><img loading="lazy" decoding="async" src="/blog/staticNdynamic/F9BhAPq172-666.png" alt="static vs dynamic web flow chart" width="666" height="442"></picture>
-출처 GeeksForGeeks
-<br><br>
-static 웹은 브라우저가 HTTP 요청을 보내면 웹 서버가 바로 HTML 파일을 전달합니다 따라서 HTTP REQUEST(요청)와 HTTP RESPONSE(응답)만 수행됩니다<br>
-서버가 단순히 요청된 파일을 반환하기 때문에 추가적인 프로그램 실행이 필요하지 않습니다<br>
 <br>
-반면 dynamic 웹 페이지는 요청이 들어오면, 웹 서버가 요청을 받아 애플리케이션 프로그램을 실행하여 HTML 출력을 생성합니다 따라서 1단계에서 4단계까지 모든 단계가 수행됩니다<br>
-HTTP 요청 → 애플리케이션 프로그램 호출 → 프로그램 실행 및 결과 생성 → HTTP 응답<br><br>
-<p>블로그로 다시 예를 들어보면<br>
-사용자가 블로그 상태를 실시간으로 변경할 수 없는 Github Pages는 정적인 웹이고,<br>
-사용자가 실시간으로 글을 관리하거나 댓글을 남길 수 있는 티스토리 블로그는 동적이라고 할 수 있습니다<br></p>
+<p>CheckChaek(쳌책)이라는 이름의 서재 서비스를 개발 했습니다<br>
+<strong>독서 목표를 설정하고 독서 활동을 기록</strong>하는 간단한 서비스입니다
+<br><br></p>
+<h2 id="-2">개발 동기</h2>
+<p>서재 서비스는 부트캠프 팀 프로젝트에서 제가 제안했던 주제입니다<br>
+저의 의견과 다른 팀원의 의견을 합쳐 실제 프로젝트는 웹툰, 웹소설, 도서 리뷰 및 추천 플랫폼으로 개발되었습니다<br>
+백엔드 과정을 수료 후 개인 프로젝트를 진행하고자 했고, 저에게 필요한 기능만 담은 가벼운 서비스로 개발하게 되었습니다<br><br></p>
+<h1 id="checkchaek-2">CheckChaek 📚</h1>
+<picture><source type="image/avif" srcset="/blog/checkChaek/djLBFv8rRD-700.avif 700w"><source type="image/webp" srcset="/blog/checkChaek/djLBFv8rRD-700.webp 700w"><img loading="lazy" decoding="async" src="/blog/checkChaek/djLBFv8rRD-700.png" alt="CheckChaek 스크린샷" width="700" height="337"></picture>
+<h2 id="-3">주요 기능</h2>
+<h3 id="-4">사용자</h3>
+<p>로그인은 네이버를 통해서만 가능하게 했습니다<br>
+웹사이트 자체 회원가입은 과감히 가입을 생략했고 카카오 vs 네이버 고민하다가 네이버로 결정했습니다<br></p>
+<p><em>한국소비자연맹에 따르면 소셜 로그인 시 주로 사용하는 소셜미디어 1순위가 네이버(51.2%), 2순위가 카카오(39.8%)라고 합니다</em></p>
+<br>
+회원 정보가 딱히 필요하지 않은 서비스라서 별명만 수집하고 있습니다<br>
+네이버로 쳌책 서비스에 로그인하면 네이버 별명이 서비스 내의 닉네임으로 기본 설정되며 변경 가능합니다
+<picture><source type="image/avif" srcset="/blog/checkChaek/CbzwwcE_y0-446.avif 446w"><source type="image/webp" srcset="/blog/checkChaek/CbzwwcE_y0-446.webp 446w"><img loading="lazy" decoding="async" src="/blog/checkChaek/CbzwwcE_y0-446.png" alt="CheckChaek 회원 닉네임 데이터" width="446" height="171"></picture>
+<br>
+사용자가 탈퇴하면 사용자, 사용자 목표, 서재 테이블에서 해당 유저 데이터가 삭제됩니다<br>
+다만 네이버 아이디 로그인 특성상 재가입에 제약이 없습니다 데이터만 리셋될 뿐<br><br>
+<h3 id="-5">홈</h3>
+<p>홈에서는 최근에 추가된 도서를 6권 진열하고 있습니다<br>
+참고로 저는 최대한 서버 용량 부담을 줄이기 위해 도서 검색과 조회는 알라딘 API를 이용하고, 서재에 추가된 도서에 한해 서버에 저장하고 있습니다<br>
+이 추가된 도서 데이터들을 홈에서 노출하는 것입니다<br></p>
+<p>또한 서재 데이터가 있는 랜덤 사용자(최대 4인)의 서재 정보를 노출합니다<br>
+다른 사용자들이 어떤 책을 읽고 있는지 둘러볼 수 있습니다<br>
+당연히 타인의 서재 데이터 수정/삭제는 불가하며 감상평은 해당 서재의 주인에게만 보입니다</p>
+<picture><source type="image/avif" srcset="/blog/checkChaek/TBItm7CUid-318.avif 318w"><source type="image/webp" srcset="/blog/checkChaek/TBItm7CUid-318.webp 318w"><img loading="lazy" decoding="async" style="display:inline-block;max-width:315px;" src="/blog/checkChaek/TBItm7CUid-318.png" alt="CheckChaek 최근 추가 도서" width="318" height="310"></picture>
+<picture><source type="image/avif" srcset="/blog/checkChaek/XDqeQV61eP-646.avif 646w"><source type="image/webp" srcset="/blog/checkChaek/XDqeQV61eP-646.webp 646w"><img loading="lazy" decoding="async" style="display:inline-block;max-width:630px;" src="/blog/checkChaek/XDqeQV61eP-646.png" alt="CheckChaek 랜덤 서재" width="646" height="260"></picture>
+<h3 id="-6">서재</h3>
+<p>앞서 말했듯이 서재에 추가하기 위한 도서 검색 및 상세 정보 조회는 알라딘 API를 이용하고 있습니다<br>
+도서를 서재에 추가하면 해당 도서의 기본 정보가 서버에 함께 저장됩니다<br>
+데이터 관련 요청은 로그인 상태를 요구하므로 UI에서부터 세션의 uid 값을 기준으로 명확하게 로그인 여부를 구분합니다<br>
+대부분의 서재 CUD 요청은 ajax 비동기 처리했습니다<br>
+서재의 도서 상태는 &quot;읽을 예정&quot;, &quot;읽는 중&quot;, &quot;읽음&quot; 세 가지로 구분되며, 도서의 상태가 &quot;읽음&quot;일 때에만 완독일과 감상평을 입력할 수 있게 UI를 설계했습니다<br>
+<picture><source type="image/avif" srcset="/blog/checkChaek/QmJFfEE-Sk-650.avif 650w"><source type="image/webp" srcset="/blog/checkChaek/QmJFfEE-Sk-650.webp 650w"><img loading="lazy" decoding="async" src="/blog/checkChaek/QmJFfEE-Sk-650.png" alt="CheckChaek 네이버 로그인" width="650" height="554"></picture></p>
+<br>
+팀 프로젝트 때는 MyBatis를 썼는데 paging이랑 sorting에서 시간을 많이 소모했습니다 게다가 페이징 방법을 찾아도 JPA를 이용하는 방법이 대부분이었어요<br>그래서 개인 프로젝트는 JPA Data pagination을 적용했습니다<br>
+확실히 쿼리문 작성에 소요되는 시간이 대폭 줄었고 백엔드 코딩이 조금 더 수월했습니다<br>
+다만 UI에서 sorting을 추가한 페이징을 넣는 건 MyBatis와 별 차이 없이 복잡했습니다<br>
+이건 저의 JPA 숙련도의 문제일 수도 있겠다만 일단 이번 첫 시도는 그랬습니다<br>
+<br>
+<picture><source type="image/avif" srcset="/blog/checkChaek/8nNDC6dWgw-650.avif 650w"><source type="image/webp" srcset="/blog/checkChaek/8nNDC6dWgw-650.webp 650w"><img loading="lazy" decoding="async" src="/blog/checkChaek/8nNDC6dWgw-650.png" alt="CheckChaek 서재 Repository" width="650" height="161"></picture>
+<br>
+<h3 id="-7">마이페이지</h3>
+<p>서재나 마이페이지에 접근하면 Interceptor가 로그인 여부를 확인하고 false일 때 네이버 로그인으로 리다이렉트 합니다<br>
+연간 목표를 설정하면 달성도 게이지를 보여줍니다<br>
+서재의 완독일 연도 기준으로 연도별 독서량 집계합니다</p>
+<picture><source type="image/avif" srcset="/blog/checkChaek/-Mv5HOWlpT-480.avif 480w"><source type="image/webp" srcset="/blog/checkChaek/-Mv5HOWlpT-480.webp 480w"><img loading="lazy" decoding="async" src="/blog/checkChaek/-Mv5HOWlpT-480.png" alt="CheckChaek 목표 달성도" width="480" height="528"></picture>
+<br>
+<hr>
+<h2 id="room-for-improvement">Room for improvement</h2>
+<p>첫 개인 풀스택 프로젝트이다 보니 간단한 웹 서비스로 개발했다<br>
+개발을 하며 '이게 되네' 순간들도 있었고, '왜 안되지?' 순간들도 있었다 후자가 더 많았던 점이 아쉽다<br>
+3주 동안 꾸준히 조금씩 완성시켜 결실을 본 점은 뿌듯하다<br>
+주변인들부터 시작해서 서비스를 확장시킬 계획이다<br>
+다만 주변에 독서가가 별로 없어 아직 실사용자가 없다<br>
+확실히 나는 잘 사용하고 있다 😂<br>
+기량을 발전시켜 개인화된 도서 추천 기능을 제공하는 추천 탭을 추가하고 싶다<br></p>
 
-<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/howToLogSql/">스프링부트에서 SQL 로그 출력하기 - logback, log4jdbc</a></li><li class="links-nextprev-next">Next →<br><a href="/blog/ciNcd/">CI/CD란? - Github Pages와 CI/CD</a></li>
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/jpaNmybatis/">Java 데이터베이스 연동 기술 JPA vs MyBatis 이해하기</a></li>
 </ul>
 
 			</div>
 		</div>
 
-		<!-- This page `/blog/staticNdynamic/` was built on 2024-12-19T11:18:36.865Z -->
+		<!-- This page `/blog/checkChaek/` was built on 2024-12-19T11:18:36.864Z -->
 		
 	</body>
 </html>
