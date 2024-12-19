@@ -5,8 +5,9 @@ body{
 dl,li,menu,ol,ul {list-style: none;}
 picture img {
     display: block;
-    width: 100%;
-    max-width: 40rem;
+    /* width: 100%;
+    max-width: 40rem; */
+    max-width:90%;
     height: auto;
 }
 header > h1 { margin: 0;}
