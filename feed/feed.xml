@@ -22,7 +22,7 @@
 &lt;h2 id=&quot;&quot;&gt;개발 동기&lt;/h2&gt;
 &lt;p&gt;서재 서비스는 부트캠프 팀 프로젝트에서 제가 제안했던 주제입니다&lt;br&gt;
 저의 의견과 다른 팀원의 의견을 합쳐 실제 프로젝트는 웹툰, 웹소설, 도서 리뷰 및 추천 플랫폼으로 개발되었습니다&lt;br&gt;
-백엔드 과정을 수료 후 개인 프로젝트를 진행하고자 했고, 저에게 필요한 기능만 담은 가벼운 서비스로 개발하게 되었습니다&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+백엔드 과정을 수료 후 UI 설계부터 AWS 서버에 배포까지 프로세스를 정리하는 기회로 삼아, 저에게 필요한 가벼운 취미용 웹을 개발하게 되었습니다&lt;br&gt;&lt;/p&gt;
 &lt;h1 id=&quot;checkchaek&quot;&gt;CheckChaek 📚&lt;/h1&gt;
 &lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://selinakk.github.io/blog/checkChaek/djLBFv8rRD-700.avif 700w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://selinakk.github.io/blog/checkChaek/djLBFv8rRD-700.webp 700w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://selinakk.github.io/blog/checkChaek/djLBFv8rRD-700.png&quot; alt=&quot;CheckChaek 스크린샷&quot; width=&quot;700&quot; height=&quot;337&quot;&gt;&lt;/picture&gt;
 &lt;h2 id=&quot;-2&quot;&gt;주요 기능&lt;/h2&gt;

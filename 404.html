@@ -250,9 +250,8 @@ body{
 dl,li,menu,ol,ul {list-style: none;}
 picture img {
     display: block;
-    /* width: 100%;
-    max-width: 40rem; */
-    max-width:90%;
+    /* /* width: 100%; */
+    max-width: 40rem;
     height: auto;
 }
 header > h1 { margin: 0;}
@@ -292,6 +291,11 @@ footer i svg {width:1rem;}
 @media screen and (max-width: 767px) {
     header {justify-content: space-between;}
     aside.aside {display: none;}
+    picture img {
+        width:100%;
+        max-width:33rem;
+        margin: 0 auto;
+    }
 }</style>
 
 	</head>
@@ -356,7 +360,7 @@ This will work for both GitHub pages and Netlify:
 			</div>
 		</div>
 
-		<!-- This page `/404.html` was built on 2024-12-19T11:18:36.864Z -->
+		<!-- This page `/404.html` was built on 2024-12-19T11:44:01.013Z -->
 		
 	</body>
 </html>

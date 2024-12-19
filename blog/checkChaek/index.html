@@ -418,9 +418,8 @@ body{
 dl,li,menu,ol,ul {list-style: none;}
 picture img {
     display: block;
-    /* width: 100%;
-    max-width: 40rem; */
-    max-width:90%;
+    /* /* width: 100%; */
+    max-width: 40rem;
     height: auto;
 }
 header > h1 { margin: 0;}
@@ -460,6 +459,11 @@ footer i svg {width:1rem;}
 @media screen and (max-width: 767px) {
     header {justify-content: space-between;}
     aside.aside {display: none;}
+    picture img {
+        width:100%;
+        max-width:33rem;
+        margin: 0 auto;
+    }
 }</style>
 
 	</head>
@@ -520,7 +524,7 @@ footer i svg {width:1rem;}
 <h2 id="-2">개발 동기</h2>
 <p>서재 서비스는 부트캠프 팀 프로젝트에서 제가 제안했던 주제입니다<br>
 저의 의견과 다른 팀원의 의견을 합쳐 실제 프로젝트는 웹툰, 웹소설, 도서 리뷰 및 추천 플랫폼으로 개발되었습니다<br>
-백엔드 과정을 수료 후 개인 프로젝트를 진행하고자 했고, 저에게 필요한 기능만 담은 가벼운 서비스로 개발하게 되었습니다<br><br></p>
+백엔드 과정을 수료 후 UI 설계부터 AWS 서버에 배포까지 프로세스를 정리하는 기회로 삼아, 저에게 필요한 가벼운 취미용 웹을 개발하게 되었습니다<br></p>
 <h1 id="checkchaek-2">CheckChaek 📚</h1>
 <picture><source type="image/avif" srcset="/blog/checkChaek/djLBFv8rRD-700.avif 700w"><source type="image/webp" srcset="/blog/checkChaek/djLBFv8rRD-700.webp 700w"><img loading="lazy" decoding="async" src="/blog/checkChaek/djLBFv8rRD-700.png" alt="CheckChaek 스크린샷" width="700" height="337"></picture>
 <h2 id="-3">주요 기능</h2>
@@ -581,7 +585,7 @@ footer i svg {width:1rem;}
 			</div>
 		</div>
 
-		<!-- This page `/blog/checkChaek/` was built on 2024-12-19T11:18:36.864Z -->
+		<!-- This page `/blog/checkChaek/` was built on 2024-12-19T11:44:01.013Z -->
 		
 	</body>
 </html>
