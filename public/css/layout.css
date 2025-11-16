@@ -24,6 +24,7 @@ aside.aside > h2 {margin-bottom:.3rem;}
     max-width: 70rem;
     padding: 1rem;
     overflow-y: auto;
+    word-break: keep-all;
 }
 .links-nextprev {margin-top: 3em;}
 .catelist {
