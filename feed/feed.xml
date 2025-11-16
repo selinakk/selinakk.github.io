@@ -5,11 +5,60 @@
   <subtitle>I learn. I code.</subtitle>
   <link href="https://selinakk.github.io/feed/feed.xml" rel="self" />
   <link href="https://selinakk.github.io/" />
-  <updated>2024-12-19T00:00:00Z</updated>
+  <updated>2025-11-16T00:00:00Z</updated>
   <id>https://selinakk.github.io/</id>
   <author>
     <name>selinakk</name>
   </author>
+  <entry>
+    <title>단색 배경화면 이미지 생성기 MujiWallpaper 개발기</title>
+    <link href="https://selinakk.github.io/blog/muji/" />
+    <updated>2025-11-16T00:00:00Z</updated>
+    <id>https://selinakk.github.io/blog/muji/</id>
+    <content type="html">&lt;br&gt;
+&lt;p&gt;무지무지 단순한 &lt;strong&gt;무지 배경화면 이미지 생성기&lt;/strong&gt;를 개발했습니다 ​ ..( ͡° ͜ʖ ͡°)
+&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h2 id=&quot;&quot;&gt;개발 동기&lt;/h2&gt;
+&lt;p&gt;저는 휴대폰 배경화면을 자주 바꾸는 편입니다&lt;br&gt;
+단순한 무지 색상 배경화면도 애용하기에, (Solid color image generator는 구글에서 쉽게 찾아볼 수 있지만) 한 번쯤 직접 이런 서비스를 만들고 싶었습니다&lt;br&gt;
+내 개인적 필요에 의한 개발은 유용하고 UI/UX를 내 기준으로 맞출 수 있다는 점이 좋습니다&lt;br&gt;&lt;/p&gt;
+&lt;h1 id=&quot;mujiwallpaper&quot;&gt;MujiWallpaper 🎨&lt;/h1&gt;
+&lt;p&gt;💻 PC에서
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://selinakk.github.io/blog/muji/pgRmDMP_JE-960.avif 960w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://selinakk.github.io/blog/muji/pgRmDMP_JE-960.webp 960w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://selinakk.github.io/blog/muji/pgRmDMP_JE-960.jpeg&quot; alt=&quot;MujiWallpaper PC 스크린샷&quot; width=&quot;960&quot; height=&quot;640&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;p&gt;📱 모바일에서
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://selinakk.github.io/blog/muji/lIqAaRvDYa-400.avif 400w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://selinakk.github.io/blog/muji/lIqAaRvDYa-400.webp 400w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; width=&quot;400&quot; src=&quot;https://selinakk.github.io/blog/muji/lIqAaRvDYa-400.jpeg&quot; alt=&quot;MujiWallpaper 모바일 스크린샷&quot; height=&quot;916&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;h2 id=&quot;one-and-only&quot;&gt;One and Only 기능&lt;/h2&gt;
+&lt;p&gt;색상과 비율을 선택하고 &#39;생성하기&#39;&lt;br&gt;
+생성된 이미지가 페이지 전환 없이 바로 보여지며 저장할 수 있습니다
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://selinakk.github.io/blog/muji/W7C8ZV1-Xk-960.avif 960w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://selinakk.github.io/blog/muji/W7C8ZV1-Xk-960.webp 960w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://selinakk.github.io/blog/muji/W7C8ZV1-Xk-960.jpeg&quot; alt=&quot;MujiWallpaper 이미지 생성하기 결과창 및 로그&quot; width=&quot;960&quot; height=&quot;353&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;br&gt;
+지정한 파일명은 muji + rgb값.png입니다
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://selinakk.github.io/blog/muji/3jjoxtjk-b-960.avif 960w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://selinakk.github.io/blog/muji/3jjoxtjk-b-960.webp 960w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://selinakk.github.io/blog/muji/3jjoxtjk-b-960.jpeg&quot; alt=&quot;MujiWallpaper 다운로드 폴더에 저장된 이미지&quot; width=&quot;960&quot; height=&quot;145&quot;&gt;&lt;/picture&gt;
+&lt;p&gt;&lt;br&gt;&lt;br&gt;
+DB도 필요 없는 매우 직관적이고 단순한 애플리케이션이죠&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h2 id=&quot;-2&quot;&gt;개발 이야기&lt;/h2&gt;
+&lt;p&gt;-Color picker는 &lt;a href=&quot;https://iro.js.org&quot;&gt;iro.js&lt;/a&gt; 라이브러리를 사용했습니다&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;-고른 색상을 잘 보이게 표시하고 싶어서 타이틀 배경색상이 선택한 색상으로 바뀌게 했는데 &#39;UI가 이게 최선인가&#39; 하는 의구심을 아직 못 버렸어요 어두운 배경에서는 타이틀이 감춰지기도 하고..🤔
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://selinakk.github.io/blog/muji/90b3a-BRbG-720.avif 720w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://selinakk.github.io/blog/muji/90b3a-BRbG-720.webp 720w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://selinakk.github.io/blog/muji/90b3a-BRbG-720.jpeg&quot; alt=&quot;MujiWallpaper 변경된 타이틀 배경색상&quot; width=&quot;720&quot; height=&quot;145&quot;&gt;&lt;/picture&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;-Color picker에서 색상값을 RGB 객체로 얻고 그 값들을 String으로 만들어 hidden input으로 보냅니다&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;-폼을 POST 방식으로 해서 json으로 값을 보내려고 해봤는데 제가 원하는 대로(페이지 전환X, 다운로드 링크X, 이미지를 우클릭해 저장) 이미지를 사용하려면 GET 방식이 적합했습니다&lt;br&gt;
+왜 굳이 우클릭?이라고 묻는다면, 아이폰이 이유라고 답하겠습니다&lt;br&gt;
+갤럭시를 오래 쓰다가 최근에 간만에 아이폰을 사용하게 됐는데 웹에서 이미지 저장 링크를 눌러도 사진 앱에 저장이 안 되더라고요&lt;br&gt;
+찾아보니 이미지를 직접 클릭해서 사진 앱에 저장하는 방식이 답이었습니다&lt;br&gt;
+아이폰 환경에서의 다운로드 링크에 대한 불신이 생겨 능동적인 우클릭 저장 방식으로 만들었습니다&lt;br&gt;
+보안이 중요한 서비스가 아니기에 부담도 없었고요&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;-색상이나 비율 값이 null인 상태로 폼을 제출하거나 이미지 생성에 실패하면 alert를 띄웁니다
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://selinakk.github.io/blog/muji/6iCmbmn0C5-960.avif 960w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://selinakk.github.io/blog/muji/6iCmbmn0C5-960.webp 960w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://selinakk.github.io/blog/muji/6iCmbmn0C5-960.jpeg&quot; alt=&quot;MujiWallpaper 빈 값에 대한 경고창&quot; width=&quot;960&quot; height=&quot;130&quot;&gt;&lt;/picture&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;-이번 작업을 하면서 확장성과 구조에 대한 생각을 좀 했습니다&lt;br&gt;
+각 역할을 쉽게 구분할 수 있게 짜임새 있는 구조를 만드는 건 결국 확장성을 키우는 건데&lt;br&gt;
+이건 너무 단순한 애플리케이션이라서 덩어리처럼 뭉쳐서 쓰다가 나중에 리팩토링을 했습니다&lt;br&gt;
+나의 지극히 단순한 필요에 의해 만든 거라 확장할 것 같지는 않지만 언제나 확장 가능한 구조로 코딩할 것..(다짐)
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;-Oracle Cloud는 처음인데 가입이 힘들었지만 느낌이 좋아요 AWS 같은 과금 문제가 없을 것 같은 느낌&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>독서가를 위한 웹 서비스 CheckChaek 개발기</title>
     <link href="https://selinakk.github.io/blog/checkChaek/" />
