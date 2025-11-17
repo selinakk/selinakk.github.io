@@ -48,13 +48,13 @@ DB도 필요 없는 매우 직관적이고 단순한 애플리케이션이죠&lt
 찾아보니 이미지를 직접 클릭해서 사진 앱에 저장하는 방식이 답이었습니다&lt;br&gt;
 아이폰 환경에서의 다운로드 링크에 대한 불신이 생겨 능동적인 우클릭 저장 방식으로 만들었습니다&lt;br&gt;
 보안이 중요한 서비스가 아니기에 부담도 없었고요&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;-색상이나 비율 값이 null인 상태로 폼을 제출하거나 이미지 생성에 실패하면 alert를 띄웁니다
+&lt;p&gt;-색상이나 비율 값이 null인 상태로 폼을 제출하거나 이미지 생성에 실패하면 alert을 띄웁니다
 &lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://selinakk.github.io/blog/muji/6iCmbmn0C5-960.avif 960w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://selinakk.github.io/blog/muji/6iCmbmn0C5-960.webp 960w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://selinakk.github.io/blog/muji/6iCmbmn0C5-960.jpeg&quot; alt=&quot;MujiWallpaper 빈 값에 대한 경고창&quot; width=&quot;960&quot; height=&quot;130&quot;&gt;&lt;/picture&gt;
 &lt;br&gt;&lt;/p&gt;
 &lt;p&gt;-이번 작업을 하면서 확장성과 구조에 대한 생각을 좀 했습니다&lt;br&gt;
 각 역할을 쉽게 구분할 수 있게 짜임새 있는 구조를 만드는 건 결국 확장성을 키우는 건데&lt;br&gt;
 이건 너무 단순한 애플리케이션이라서 덩어리처럼 뭉쳐서 쓰다가 나중에 리팩토링을 했습니다&lt;br&gt;
-나의 지극히 단순한 필요에 의해 만든 거라 확장할 것 같지는 않지만 언제나 확장 가능한 구조로 코딩할 것..(다짐)
+확장할 것 같지 않아도 언제나 확장 가능한 구조로 코딩을 시작할 것을 다짐했습니다
 &lt;br&gt;&lt;/p&gt;
 &lt;p&gt;-Oracle Cloud는 처음인데 가입이 힘들었지만 느낌이 좋아요 AWS 같은 과금 문제가 없을 것 같은 느낌&lt;/p&gt;
 </content>
