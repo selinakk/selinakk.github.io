@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Slow and steady. CheckChaek 고도화하기</title>
+		<meta name="description" content="개인 첫 풀스택 개발 프로젝트 쳌책">
+		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Selinakk&#39;s">
+		
+		<style>/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #8292a2;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+	--eleventy-code-padding: 1.25em;
+	padding-left: var(--eleventy-code-padding);
+	padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+	background-color: hsl(0, 51%, 37%);
+	color: inherit;
+}
+.token.inserted {
+	background-color: hsl(126, 31%, 39%);
+	color: inherit;
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+	width: var(--eleventy-code-padding);
+	background-color: rgba(0,0,0,.2);
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+	display: block;
+	margin-left: calc(-1 * var(--eleventy-code-padding));
+	margin-right: calc(-1 * var(--eleventy-code-padding));
+	text-decoration: none; /* override del, ins, mark defaults */
+	color: inherit; /* override del, ins, mark defaults */
+}
+/* This is an arbitrary CSS string added to the bundle */
+@font-face {
+	font-family: 'Space Grotesk';
+	font-style: normal;
+	font-weight: 300 700;
+	font-display: swap;
+	src: url(https://fonts.gstatic.com/s/spacegrotesk/v16/V8mDoQDjQSkFtoMM3T6r8E7mPbF4C_k3HqU.woff2) format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+/* Defaults */
+:root {
+	--font-family: 'Space Grotesk','SUIT-Regular', -apple-system, system-ui, sans-serif;
+	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+}
+
+/* Theme colors */
+:root {
+	--color-gray-20: #e0e0e0;
+	--color-gray-90: #333;
+
+	--background-color: #fff;
+	--nav-bg-color: #f2f2f2;
+
+	--border-color: #1e1e1e;
+
+	--text-color: var(--color-gray-90);
+	--text-color-link-active: #7741f5;
+
+	--syntax-tab-size: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-gray-90: #dad8d8;
+
+		--background-color: #15202b;
+		--nav-bg-color: #414141;
+
+		--border-color: #dad8d8;
+
+		--text-color: #f2f2f2;
+		--text-color-link-active: #24ffc5;
+	}
+}
+
+
+/* Global stylesheet */
+* {
+	box-sizing: border-box;
+}
+@view-transition {
+	navigation: auto;
+}
+html,
+body {
+	padding: 0;
+	margin: 0 auto;
+	font-family: var(--font-family);
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+html {
+	overflow-y: scroll;
+}
+p:last-child {
+	margin-bottom: 0;
+}
+p {
+	line-height: 1.5;
+}
+li {
+	line-height: 1.5;
+}
+a[href] {
+	color: var(--text-color);
+}
+a[href]:hover,
+a[href]:active {
+	color: var(--text-color-link-active);
+}
+main :first-child {
+	margin-top: 0;
+}
+.links-nextprev {
+	display: flex;
+	justify-content: space-between;
+	gap: .5em 1em;
+	list-style: "";
+	border-top: 1px dashed var(--color-gray-20);
+	padding: 1em 0;
+}
+.links-nextprev > * {
+	flex-grow: 1;
+}
+.links-nextprev-next {
+	text-align: right;
+}
+table {
+	margin: 1em 0;
+}
+table td,
+table th {
+	padding-right: 1em;
+}
+pre,
+code {
+	font-family: var(--font-family-monospace);
+}
+pre:not([class*="language-"]) {
+	margin: .5em 0;
+	line-height: 1.375; /* 22px /16 */
+	-moz-tab-size: var(--syntax-tab-size);
+	-o-tab-size: var(--syntax-tab-size);
+	tab-size: var(--syntax-tab-size);
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	overflow-x: auto;
+}
+code {
+	word-break: break-all;
+}
+.pb20 {padding-bottom: 20px;}
+
+/* Header */
+header {
+	display: flex;
+	gap: 1em .5em;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1.5rem 1rem;
+}
+header > a {
+	display: inline-flex;
+	width: 24px;
+	height: 24px;
+}
+header > a > svg {fill: var(--text-color);}
+header > a:hover > svg {fill: var(--text-color-link-active);}
+
+/* Nav */
+.nav {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.nav-item {
+	display: inline-flex;
+	padding: .2rem .4rem;
+	margin-right: .2rem;
+	background-color: var(--nav-bg-color);
+	font-size: .9em;
+}
+.nav-item a[href]:not(:hover) {
+	text-decoration: none;
+}
+
+/* Post list */
+.postlist {
+	list-style: none;
+	padding: 0;
+}
+.postlist-item {
+	display: flex;
+	padding:10px 0;
+	margin:0;
+	align-items: baseline;
+	counter-increment: start-from -1;
+	border-bottom: 1px solid var(--border-color);
+}
+.postlist-item:before {
+	content: "" counter(start-from, decimal-leading-zero) "";
+	position: relative;
+	top: -7.5px;
+	display: inline-block;
+	padding-right:.7rem;
+}
+.postlist-date,
+.postlist-item:before {
+	font-size: 0.8125em;
+	color: var(--color-gray-90);
+}
+.postlist-date {
+	word-spacing: -0.5px;
+}
+.postlist-link {
+	font-size: 2em;
+	font-size: calc(20px + ((34 - 20) * (100vw - 390px) / (1728 - 390)));;
+	flex-basis: calc(100% - 1.5rem);
+	text-decoration: none;
+}
+.postlist-item-active .postlist-link {
+	font-weight: bold;
+}
+
+/* Tags */
+.post-tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: capitalize;
+}
+.postlist-item > .post-tag {
+	align-self: center;
+}
+
+/* Tags list */
+.post-metadata {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: .5em;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.post-metadata time {
+	margin-right: 1em;
+}
+@media screen and (max-width:767px) {
+	.postlist-item:before {
+		top: -3.25px;
+	}
+}
+body{
+    width: 100%;
+    max-width: 87rem;
+}
+dl,li,menu,ol,ul {list-style: none;}
+picture img {
+    display: block;
+    /* /* width: 100%; */
+    max-width: 40rem;
+    height: auto;
+}
+header > h1 { margin: 0;}
+.container{
+    display: flex;
+    justify-content: space-between;
+}
+aside.aside{
+    min-width: 10rem;
+    padding: 1rem;
+}
+aside.aside > h2 {margin-bottom:.3rem;}
+.contents{
+    width:100%;
+    max-width: 70rem;
+    padding: 1rem;
+    overflow-y: auto;
+    word-break: keep-all;
+}
+.links-nextprev {margin-top: 3em;}
+.catelist {
+    padding:0;
+    margin: 0;
+}
+.catelist a{
+    padding: .2rem 0;
+    text-decoration: none;
+}
+.catelist svg{
+    margin-right: 4.5px;
+    vertical-align: middle;
+    opacity: .7;
+}
+.img-sm {max-width:23rem;}
+.center {margin: 0 auto;}
+footer i svg {width:1rem;}
+
+@media screen and (max-width: 767px) {
+    header {justify-content: space-between;}
+    aside.aside {display: none;}
+    picture img {
+        width:100%;
+        max-width:33rem;
+        margin: 0 auto;
+    }
+}</style>
+
+	</head>
+	<body>
+		<header>
+			<nav>
+				<ul class="nav">
+					<li class="nav-item"><a href="/">HOME</a></li>
+					<li class="nav-item"><a href="/blog/">POSTS</a></li>
+					<li class="nav-item"><a href="/feed/feed.xml">RSS</a></li>
+				</ul>
+			</nav>
+			<a href="//github.com/selinakk" target="_blank" title="Github(@selinakk) 새창열기">
+				<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+			</a>
+		</header>
+		<div class="container">
+		<aside class="aside">
+		<h2 id="">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder2-open" viewBox="0 0 16 16">
+				<path d="M1 3.5A1.5 1.5 0 0 1 2.5 2h2.764c.958 0 1.76.56 2.311 1.184C7.985 3.648 8.48 4 9 4h4.5A1.5 1.5 0 0 1 15 5.5v.64c.57.265.94.876.856 1.546l-.64 5.124A2.5 2.5 0 0 1 12.733 15H3.266a2.5 2.5 0 0 1-2.481-2.19l-.64-5.124A1.5 1.5 0 0 1 1 6.14zM2 6h12v-.5a.5.5 0 0 0-.5-.5H9c-.964 0-1.71-.629-2.174-1.154C6.374 3.334 5.82 3 5.264 3H2.5a.5.5 0 0 0-.5.5zm-.367 1a.5.5 0 0 0-.496.562l.64 5.124A1.5 1.5 0 0 0 3.266 14h9.468a1.5 1.5 0 0 0 1.489-1.314l.64-5.124A.5.5 0 0 0 14.367 7z"></path>
+			</svg>
+		</h2>
+			<ul class="catelist">
+			
+				
+				<li>
+					ㄴ
+					<a href="/tags/blog/" class="post-tag">Blog</a>
+				</li>
+			
+				
+				<li>
+					ㄴ
+					<a href="/tags/backend/" class="post-tag">Backend</a>
+				</li>
+			
+				
+				<li>
+					ㄴ
+					<a href="/tags/about-me/" class="post-tag">About me</a>
+				</li>
+			
+			</ul>
+		</aside>
+			<div id="skip" class="contents">
+					
+<h2 id="slow-and-steady-checkchaek">Slow and steady. CheckChaek 고도화하기</h2>
+
+<ul class="post-metadata">
+	<li><a href="/tags/blog/" class="post-tag">Blog</a></li>
+</ul>
+
+<br>
+<p>CheckChaek(이하 쳌책)을 지난 1년동안 꽤나 열심히 썼습니다<br>
+<a href="/blog/checkChaek/">처음 만들었을 때도</a>, 지금도 매우 단순한 기능을 갖고 있지만 나름대로 천천히 그리고 꾸준히 발전해 왔습니다
+<br><br></p>
+<h2 id="-2">주요 고도화 기능</h2>
+<ul>
+<li>완독 도서를 대상으로 평점 기능 추가</li>
+<li>도서 관심 기능 및 관심 목록 페이지 추가</li>
+<li>도서 검색 시 결과 목록에서 도서의 서재 내 존재 여부, 관심 여부 표시(사용자 기준)</li>
+<li>관리자 페이지 보안 강화</li>
+</ul>
+<h1 id="checkchaek">CheckChaek 📚</h1>
+<picture><source type="image/avif" srcset="/blog/UpgradedCheckChaek/8dXisGuVO3-1122.avif 1122w"><source type="image/webp" srcset="/blog/UpgradedCheckChaek/8dXisGuVO3-1122.webp 1122w"><img loading="lazy" decoding="async" src="/blog/UpgradedCheckChaek/8dXisGuVO3-1122.png" alt="CheckChaek 스크린샷" width="1122" height="430"></picture>
+<br>
+<h2 id="-3">주요 변화</h2>
+<h3 id="-4">홈</h3>
+<p>여러 사용자의 서재 정보를 랜덤으로 보여주는 '쳌책 사용자들의 서재를 둘러봐요'를 없애고 '요즘 베스트셀러'를 만들었습니다<br>
+1위부터 10위까지 순서대로 나열합니다</p>
+<picture><source type="image/avif" srcset="/blog/UpgradedCheckChaek/l1PfOetrli-317.avif 317w"><source type="image/webp" srcset="/blog/UpgradedCheckChaek/l1PfOetrli-317.webp 317w"><img loading="lazy" decoding="async" src="/blog/UpgradedCheckChaek/l1PfOetrli-317.png" alt="CheckChaek 홈 베스트셀러 목록" width="317" height="492"></picture>
+<p>알라딘 API 감사합니다🙏</p>
+<picture><source type="image/avif" srcset="/blog/UpgradedCheckChaek/EcfgJWyHqC-440.avif 440w"><source type="image/webp" srcset="/blog/UpgradedCheckChaek/EcfgJWyHqC-440.webp 440w"><img loading="lazy" decoding="async" src="/blog/UpgradedCheckChaek/EcfgJWyHqC-440.png" alt="CheckChaek 베스트셀러 API 요청" width="440" height="132"></picture>
+<h3 id="dbms">DBMS</h3>
+<p>DBMS를 MySQL에서 PostgreSQL로 변경했습니다<br>
+배경은 이렇습니다<br>
+AWS에서 돌리던 쳌책 서버를 과금 이슈때문에 친구들에게 양해를 구하고 종료했습니다<br>
+인스턴스를 정지했는데도 희한하게 몇달동안 소액 결제가 계속 되어 계정까지 삭제해 버렸습니다<br>
+친구들 데이터를 백업해두었으나 다시 서버를 운영할 엄두가 안 나서 한동안 로컬에서 개인용으로 사용했습니다<br>
+그러다 접근성의 한계를 느껴 Oracle Cloud에서 재배포를 시도하게 됐습니다<br>
+무료 티어에서 웹+MySQL DB를 동시에 돌리기는 어려워 DB를 분리하기로 했습니다<br>
+무료 DB 서비스를 찾아보니 MySQL 환경은 없다시피 하고 PostgreSQL은 제법 존재했습니다<br>
+그중 <a href="https://supabase.com">Supabase</a>에서 무료 PostgreSQL 환경을 구축하고 애플리케이션과의 연결을 성공했습니다<br></p>
+<picture><source type="image/avif" srcset="/blog/UpgradedCheckChaek/tpoZvosPJU-472.avif 472w"><source type="image/webp" srcset="/blog/UpgradedCheckChaek/tpoZvosPJU-472.webp 472w"><img loading="lazy" decoding="async" src="/blog/UpgradedCheckChaek/tpoZvosPJU-472.png" alt="Supabase 대시보드" width="472" height="172"></picture>
+<br>
+<p>DB 마이그레이션 과정에서 JPA(Hibernate)가 아주 유용했습니다!</p>
+<pre class="language-js" tabindex="0"><code class="language-js">spring<span class="token punctuation">.</span>jpa<span class="token punctuation">.</span>hibernate<span class="token punctuation">.</span>ddl<span class="token operator">-</span>auto<span class="token operator">=</span>update</code></pre>
+<p>위 옵션은 보통 <strong>validate</strong>로 설정하죠 validate는 Entity 클래스와 스키마의 일치 여부를 검증만 합니다<br>
+<strong>update</strong>는 Entity 정의를 기반으로 스키마를 수정합니다<br>
+제 PostgreSQL 스키마는 비어있었기에 update 옵션을 통해 테이블이 자동 생성되었습니다<br>
+이후 기존 DB와 똑같이 동작하도록 일부 컬럼 타입이나 제약조건을 약간 수정 후 기존 데이터를 csv 포맷으로 import 했습니다<br><br></p>
+<h2 id="-5">추가된 기능</h2>
+<h3 id="-6">사용자</h3>
+<p>사용자가 연도별로 읽은 책 목록을 추가했습니다<br>
+쳌책을 실사용하다 보니 지난 연도에 몇 권을 읽었는지 확인이 어려워서 추가한 부분입니다</p>
+<picture><source type="image/avif" srcset="/blog/UpgradedCheckChaek/dO_PbMvI1r-218.avif 218w"><source type="image/webp" srcset="/blog/UpgradedCheckChaek/dO_PbMvI1r-218.webp 218w"><img loading="lazy" decoding="async" src="/blog/UpgradedCheckChaek/dO_PbMvI1r-218.png" alt="CheckChaek 사용자 마이페이지" width="218" height="150"></picture>
+<p>마이페이지에서 연도별 완독 목록으로 이동할 수 있습니다<br>
+지금은 2024,2025,2026 세 개만 있어 3열로 나열을 했지만 내년부터는 다른 UI로 접근을 해야할 것 같아요<br>
+목표 달성 또한 지난 연도는 확인이 어려워 표 형식으로 지난 목표와 달성율을 보여주고 있습니다<br></p>
+<picture><source type="image/avif" srcset="/blog/UpgradedCheckChaek/9XZtrnNEUU-214.avif 214w"><source type="image/webp" srcset="/blog/UpgradedCheckChaek/9XZtrnNEUU-214.webp 214w"><img loading="lazy" decoding="async" src="/blog/UpgradedCheckChaek/9XZtrnNEUU-214.png" alt="CheckChaek 사용자 연도별 완독 목록" width="214" height="422"></picture>
+<p>목록 페이지입니다 서재와 거의 비슷한 포맷이에요<br><br></p>
+<h3 id="-7">평점</h3>
+<p>최초 개발 시에는 서재 테이블에 감상평 값이 있어 평점이 불필요하다고 생각했어요<br>
+그런데 제가 평가한 도서들을 객관적으로 정렬할 수 없으니 좀 답답했어요<br>
+서재에 도서를 추가할 때 상태가 read이면 완독일, 감상평 그리고 평점을 입력할 수 있어요<br></p>
+<picture><source type="image/avif" srcset="/blog/UpgradedCheckChaek/HJOkfwK-qQ-278.avif 278w"><source type="image/webp" srcset="/blog/UpgradedCheckChaek/HJOkfwK-qQ-278.webp 278w"><img loading="lazy" decoding="async" src="/blog/UpgradedCheckChaek/HJOkfwK-qQ-278.png" alt="CheckChaek 평점 기능" width="278" height="174"></picture>
+<p>range 타입 인풋을 사용했고 0.1점 단위로 값 설정이 가능합니다<br></p>
+<p>부수적으로 서재에 평점순 정렬을 추가했습니다<br></p>
+<picture><source type="image/avif" srcset="/blog/UpgradedCheckChaek/LL1L2rWFuK-328.avif 328w"><source type="image/webp" srcset="/blog/UpgradedCheckChaek/LL1L2rWFuK-328.webp 328w"><img loading="lazy" decoding="async" src="/blog/UpgradedCheckChaek/LL1L2rWFuK-328.png" alt="CheckChaek 평점 기능" width="328" height="28"></picture>
+<p>이 기능이 독서 취향이나 생각을 정리하는 데에 도움이 되는 것을 느꼈습니다<br><br></p>
+<h3 id="-8">관심 도서</h3>
+<p>서재에 ‘읽을 예정’으로 도서를 추가하는 방식으로 일종의 관심 역할을 수행해 왔습니다<br>
+하지만 관심이 있어 저장해 두고 싶은 것과 정말로 ‘읽을‘ 것에는 차이가 있었습니다 찜과 장바구니가 별개이듯 말이죠<br>
+서재가 수십 권의 관심 책들로 점령되는 일을 방지하고자, 메모장의 관심 책 목록을 쳌책으로 옮기고자 관심 기능을 추가했습니다<br>
+도서 항목마다 하트 버튼을 달아 관심 추가/삭제 토글이 되게 했습니다<br></p>
+<picture><source type="image/avif" srcset="/blog/UpgradedCheckChaek/iGcmwzGfRd-362.avif 362w"><source type="image/webp" srcset="/blog/UpgradedCheckChaek/iGcmwzGfRd-362.webp 362w"><img loading="lazy" decoding="async" src="/blog/UpgradedCheckChaek/iGcmwzGfRd-362.png" alt="CheckChaek 도서 관심 추가/삭제 기능" width="362" height="323"></picture>
+<p>버튼을 눌렀을 때 해당 도서가 관심 목록 DB에 있는지 확인해서 없으면 추가하고, 있으면 삭제하는 방식입니다<br>
+이 부분은 비동기 방식으로 구현하였습니다<br></p>
+<p>관심 도서 목록 페이지를 메인 탭 메뉴에 넣었습니다<br>
+<picture><source type="image/avif" srcset="/blog/UpgradedCheckChaek/49gu3IBdPb-218.avif 218w"><source type="image/webp" srcset="/blog/UpgradedCheckChaek/49gu3IBdPb-218.webp 218w"><img loading="lazy" decoding="async" src="/blog/UpgradedCheckChaek/49gu3IBdPb-218.png" alt="CheckChaek 관심 도서 목록" width="218" height="430"></picture></p>
+<p>서재와 마찬가지로 비로그인 상태로 이 페이지를 요청하면 네이버 로그인으로, 로그인이 되어있으면 해당 사용자의 목록으로 리다이렉트 됩니다</p>
+<picture><source type="image/avif" srcset="/blog/UpgradedCheckChaek/mwtDLycFsa-615.avif 615w"><source type="image/webp" srcset="/blog/UpgradedCheckChaek/mwtDLycFsa-615.webp 615w"><img loading="lazy" decoding="async" src="/blog/UpgradedCheckChaek/mwtDLycFsa-615.png" alt="CheckChaek 관심 목록 리다이렉트" width="615" height="114"></picture>
+<p>또한, 사용자가 다른 사용자의 서재 또는 관심 목록을 볼 수 있지만 id가 일치하지 않는 경우 수정/삭제 UI가 미노출되며 서버로 요청을 하더라도 걸러줍니다<br><br></p>
+<h3 id="-9">검색 목록에서 데이터 체크</h3>
+<p>원래는 검색 결과 목록에서 ‘서재에 추가 버튼‘을 누르거나 도서 링크를 클릭해 상세 페이지로 들어가야 서재 존재 여부를 확인할 수 있었습니다<br>
+지금보니 초기 UX가 은근히 불편했네요<br>
+검색 목록에서부터 관심 또는 서재 데이터베이스에 해당 도서가 존재하는지 확인이 가능하게 로직을 추가했습니다</p>
+<picture><source type="image/avif" srcset="/blog/UpgradedCheckChaek/iwpKOPNyNj-293.avif 293w"><source type="image/webp" srcset="/blog/UpgradedCheckChaek/iwpKOPNyNj-293.webp 293w"><img loading="lazy" decoding="async" src="/blog/UpgradedCheckChaek/iwpKOPNyNj-293.png" alt="CheckChaek 검색 결과에서 DB 존재 체크" width="293" height="492"></picture>
+<p>서재에 존재한다면 서재에 추가하는 인풋을 아예 감추고 상태 값을 보여주게 했습니다<br><br></p>
+<h3 id="-10">관리자 페이지 보안 강화</h3>
+<p>기존 관리자 페이지는 컨트롤러에 하드코딩해둔 아이디, 비번을 입력 폼으로 전송해서 로그인하는 방식이었습니다<br>
+임시로 해놓은건데 생각보다 관리자 페이지 들어갈 일이 별로 없어서 그 상태로 시간이 흘렀죠<br>
+그러다 고도화로 인해 관리자 페이지 구조를 손볼 일이 있어서 내친김에 로그인 방식도 개선했습니다<br>
+관리자 페이지에 접속하려면 제 계정으로 네이버 로그인이 되어있어야 합니다<br>
+아이디가 null이거나 저와 일치하지 않는 경우는 관리자 페이지의 어떤 경로로 들어가든 interceptor를 통해 사용자 홈으로 튕겨냅니다<br>
+관리자 인터셉터는 원래 적용되어 있었는데 네이버 로그인으로 검증을 하기에 보안이 +1 강화되었습니다</p>
+<picture><source type="image/avif" srcset="/blog/UpgradedCheckChaek/YhHpiuTVQA-392.avif 392w"><source type="image/webp" srcset="/blog/UpgradedCheckChaek/YhHpiuTVQA-392.webp 392w"><img loading="lazy" decoding="async" src="/blog/UpgradedCheckChaek/YhHpiuTVQA-392.png" alt="CheckChaek 관리자 로그인 시도할 때 로그" width="392" height="41"></picture>
+<br>
+<hr>
+<h2 id="-11">소감</h2>
+<p>쳌책을 애용하는 개발자로서 개선점을 찾으면 메모해 뒀다가 발전시키곤 했습니다<br>
+첫 개인 프로젝트를 꾸준히 품고 있는 것에 자부심도 느낍니다<br>
+현시점에서 혼자 사용하는 쳌책을 위해 자정 넘어서까지 코딩을 하곤 했어요<br>
+독서와 개발을 융합한 멋진 취미가 되었습니다<br>
+저는 언젠가 IT 업계를 떠나더라도 취미로 개발을 할 것 같아요<br>
+DIY라고 할까요 내 필요에 의해 내가 만들어 가는 웹이 참 재밌거든요<br>
+이제 다시 사용자(친구)들을 초대하려 합니다!<br></p>
+
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/muji/">단색 배경화면 이미지 생성기 MujiWallpaper 개발기</a></li>
+</ul>
+
+			</div>
+		</div>
+
+		<!-- This page `/blog/UpgradedCheckChaek/` was built on 2026-01-07T14:17:04.400Z -->
+		
+	</body>
+</html>
