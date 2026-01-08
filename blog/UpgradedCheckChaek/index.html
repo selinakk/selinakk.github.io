@@ -519,7 +519,7 @@ footer i svg {width:1rem;}
 </ul>
 
 <br>
-<p>CheckChaek(이하 쳌책)을 지난 1년동안 꽤나 열심히 썼습니다<br>
+<p>CheckChaek(이하 쳌책)을 지난 1년 동안 꽤나 열심히 썼습니다<br>
 <a href="/blog/checkChaek/">처음 만들었을 때도</a>, 지금도 매우 단순한 기능을 갖고 있지만 나름대로 천천히 그리고 꾸준히 발전해 왔습니다
 <br><br></p>
 <h2 id="-2">주요 고도화 기능</h2>
@@ -542,7 +542,7 @@ footer i svg {width:1rem;}
 <h3 id="dbms">DBMS</h3>
 <p>DBMS를 MySQL에서 PostgreSQL로 변경했습니다<br>
 배경은 이렇습니다<br>
-AWS에서 돌리던 쳌책 서버를 과금 이슈때문에 친구들에게 양해를 구하고 종료했습니다<br>
+AWS에서 돌리던 쳌책 서버를 과금 이슈 때문에 친구들에게 양해를 구하고 종료했습니다<br>
 인스턴스를 정지했는데도 희한하게 몇달동안 소액 결제가 계속 되어 계정까지 삭제해 버렸습니다<br>
 친구들 데이터를 백업해두었으나 다시 서버를 운영할 엄두가 안 나서 한동안 로컬에서 개인용으로 사용했습니다<br>
 그러다 접근성의 한계를 느껴 Oracle Cloud에서 재배포를 시도하게 됐습니다<br>
@@ -563,12 +563,12 @@ AWS에서 돌리던 쳌책 서버를 과금 이슈때문에 친구들에게 양�
 쳌책을 실사용하다 보니 지난 연도에 몇 권을 읽었는지 확인이 어려워서 추가한 부분입니다</p>
 <picture><source type="image/avif" srcset="/blog/UpgradedCheckChaek/dO_PbMvI1r-218.avif 218w"><source type="image/webp" srcset="/blog/UpgradedCheckChaek/dO_PbMvI1r-218.webp 218w"><img loading="lazy" decoding="async" src="/blog/UpgradedCheckChaek/dO_PbMvI1r-218.png" alt="CheckChaek 사용자 마이페이지" width="218" height="150"></picture>
 <p>마이페이지에서 연도별 완독 목록으로 이동할 수 있습니다<br>
-지금은 2024,2025,2026 세 개만 있어 3열로 나열을 했지만 내년부터는 다른 UI로 접근을 해야할 것 같아요<br>
+지금은 2024,2025,2026 세 개만 있어 3열로 나열을 했지만 내년부터는 다른 UI로 접근을 해야 할 것 같아요<br>
 목표 달성 또한 지난 연도는 확인이 어려워 표 형식으로 지난 목표와 달성율을 보여주고 있습니다<br></p>
 <picture><source type="image/avif" srcset="/blog/UpgradedCheckChaek/9XZtrnNEUU-214.avif 214w"><source type="image/webp" srcset="/blog/UpgradedCheckChaek/9XZtrnNEUU-214.webp 214w"><img loading="lazy" decoding="async" src="/blog/UpgradedCheckChaek/9XZtrnNEUU-214.png" alt="CheckChaek 사용자 연도별 완독 목록" width="214" height="422"></picture>
 <p>목록 페이지입니다 서재와 거의 비슷한 포맷이에요<br><br></p>
 <h3 id="-7">평점</h3>
-<p>최초 개발 시에는 서재 테이블에 감상평 값이 있어 평점이 불필요하다고 생각했어요<br>
+<p>최초 개발 시에는 서재 테이블에 감상평 값이 있어 평점이 불필요하다고 생각했습니다<br>
 그런데 제가 평가한 도서들을 객관적으로 정렬할 수 없으니 좀 답답했어요<br>
 서재에 도서를 추가할 때 상태가 read이면 완독일, 감상평 그리고 평점을 입력할 수 있어요<br></p>
 <picture><source type="image/avif" srcset="/blog/UpgradedCheckChaek/HJOkfwK-qQ-278.avif 278w"><source type="image/webp" srcset="/blog/UpgradedCheckChaek/HJOkfwK-qQ-278.webp 278w"><img loading="lazy" decoding="async" src="/blog/UpgradedCheckChaek/HJOkfwK-qQ-278.png" alt="CheckChaek 평점 기능" width="278" height="174"></picture>
@@ -591,14 +591,14 @@ AWS에서 돌리던 쳌책 서버를 과금 이슈때문에 친구들에게 양�
 <p>또한, 사용자가 다른 사용자의 서재 또는 관심 목록을 볼 수 있지만 id가 일치하지 않는 경우 수정/삭제 UI가 미노출되며 서버로 요청을 하더라도 걸러줍니다<br><br></p>
 <h3 id="-9">검색 목록에서 데이터 체크</h3>
 <p>원래는 검색 결과 목록에서 ‘서재에 추가 버튼‘을 누르거나 도서 링크를 클릭해 상세 페이지로 들어가야 서재 존재 여부를 확인할 수 있었습니다<br>
-지금보니 초기 UX가 은근히 불편했네요<br>
+지금 보니 초기 UX가 은근히 불편했네요<br>
 검색 목록에서부터 관심 또는 서재 데이터베이스에 해당 도서가 존재하는지 확인이 가능하게 로직을 추가했습니다</p>
 <picture><source type="image/avif" srcset="/blog/UpgradedCheckChaek/iwpKOPNyNj-293.avif 293w"><source type="image/webp" srcset="/blog/UpgradedCheckChaek/iwpKOPNyNj-293.webp 293w"><img loading="lazy" decoding="async" src="/blog/UpgradedCheckChaek/iwpKOPNyNj-293.png" alt="CheckChaek 검색 결과에서 DB 존재 체크" width="293" height="492"></picture>
 <p>서재에 존재한다면 서재에 추가하는 인풋을 아예 감추고 상태 값을 보여주게 했습니다<br><br></p>
 <h3 id="-10">관리자 페이지 보안 강화</h3>
 <p>기존 관리자 페이지는 컨트롤러에 하드코딩해둔 아이디, 비번을 입력 폼으로 전송해서 로그인하는 방식이었습니다<br>
-임시로 해놓은건데 생각보다 관리자 페이지 들어갈 일이 별로 없어서 그 상태로 시간이 흘렀죠<br>
-그러다 고도화로 인해 관리자 페이지 구조를 손볼 일이 있어서 내친김에 로그인 방식도 개선했습니다<br>
+임시로 해놓은 건데 생각보다 관리자 페이지 들어갈 일이 별로 없어서 그 상태로 시간이 흘렀죠<br>
+그러다 고도화로 인해 관리자 페이지를 손볼 일이 있어서 내친김에 로그인 방식도 개선했습니다<br>
 관리자 페이지에 접속하려면 제 계정으로 네이버 로그인이 되어있어야 합니다<br>
 아이디가 null이거나 저와 일치하지 않는 경우는 관리자 페이지의 어떤 경로로 들어가든 interceptor를 통해 사용자 홈으로 튕겨냅니다<br>
 관리자 인터셉터는 원래 적용되어 있었는데 네이버 로그인으로 검증을 하기에 보안이 +1 강화되었습니다</p>
@@ -620,7 +620,7 @@ DIY라고 할까요 내 필요에 의해 내가 만들어 가는 웹이 참 재�
 			</div>
 		</div>
 
-		<!-- This page `/blog/UpgradedCheckChaek/` was built on 2026-01-07T14:17:04.400Z -->
+		<!-- This page `/blog/UpgradedCheckChaek/` was built on 2026-01-08T14:23:01.320Z -->
 		
 	</body>
 </html>
